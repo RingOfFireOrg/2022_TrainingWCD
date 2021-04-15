@@ -11,12 +11,18 @@ import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-public class DriveTrain {
-    
+public class DriveTrain extends DifferentialDrive {
+
+    public DriveTrain(SpeedController leftMotor, SpeedController rightMotor) {
+        super(leftMotor, rightMotor);
+    }
+
 }

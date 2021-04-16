@@ -6,6 +6,9 @@
 <p>Libraries needed to build this repo</p>
 <ul>
   <li> NavX library </li>
-  <li> CTRe Phoenix library </li>
+  https://www.kauailabs.com/dist/frc/2021/navx_frc.json
+  <li> CTRe library </li>
+  
   <li> REV Robotics SparkMAX library </li>
+  https://www.revrobotics.com/content/sw/max/sdk/REVRobotics.json
 </li>

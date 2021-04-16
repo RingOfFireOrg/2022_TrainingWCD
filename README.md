@@ -16,5 +16,5 @@
 
 <p> Hardware we may want </p>
 <ul>
-  <li> spur gear for falcon 500 <a href="http://www.ctr-electronics.com/falcon-pulley.html"> link </a> </li>
+  <li> spur gear for falcon 500 -- <a href="http://www.ctr-electronics.com/falcon-pulley.html"> link </a> </li>
 </ul>

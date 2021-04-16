@@ -1,5 +1,5 @@
 # 2022_TrainingWCD
-<p> West Coast Drive Chassis (2021 Infinite Recharge) </p>
+<h2> <p> West Coast Drive Chassis (2021 Infinite Recharge) </p> </h2>
 
 <p><b> Use View: Command Palette:  wpilib: manage vendor libraries </b></p>
 

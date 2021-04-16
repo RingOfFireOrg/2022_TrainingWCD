@@ -13,7 +13,8 @@
   https://www.revrobotics.com/content/sw/max/sdk/REVRobotics.json
 </li>
 
-<ul> Hardware we may want
-  <li> spur gear for falcon 500 </li>
+Hardware we may want
+<ul> 
+  <li> spur gear for falcon 500 - <a href="http://www.ctr-electronics.com/falcon-pulley.html"> Link </a> </li>
 </ul>
   

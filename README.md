@@ -7,15 +7,8 @@
 <ul>
   <li> NavX library </li>
   https://www.kauailabs.com/dist/frc/2021/navx_frc.json
-  <li> CTRe library </li>
-  
+  <li> CTRe Phoenix library </li>
+  https://github.com/CrossTheRoadElec/Phoenix-Releases/releases (the top one)
   <li> REV Robotics SparkMAX library </li>
   https://www.revrobotics.com/content/sw/max/sdk/REVRobotics.json
 </li>
-<p> </p>
-<p>
-Hardware we may want
-<ul> 
-  <li> spur gear for falcon 500 - <a href="http://www.ctr-electronics.com/falcon-pulley.html"> Link </a> </li>
-</ul>
-</p>

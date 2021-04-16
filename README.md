@@ -12,3 +12,8 @@
   <li> REV Robotics SparkMAX library </li>
   https://www.revrobotics.com/content/sw/max/sdk/REVRobotics.json
 </li>
+
+<ul> Hardware we may want
+  <li> spur gear for falcon 500 </li>
+</ul>
+  

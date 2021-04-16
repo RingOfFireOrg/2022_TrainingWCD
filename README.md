@@ -1,7 +1,11 @@
 # 2022_TrainingWCD
-West Coast Drive Chassis (2021 Infinite Recharge)
+<p> West Coast Drive Chassis (2021 Infinite Recharge) </p>
 
-Libraries needed to build this repo
-NavX library
-CTRe library
-REV Robotics SparkMAX library
+<p><b> Use View: Command Palette:  wpilib: manage vendor libraries </b></p>
+
+<p>Libraries needed to build this repo</p>
+<ul>
+  <li> NavX library </li>
+  <li> CTRe library </li>
+  <li> REV Robotics SparkMAX library </li>
+</li>

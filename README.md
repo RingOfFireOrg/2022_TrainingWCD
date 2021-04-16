@@ -6,6 +6,6 @@
 <p>Libraries needed to build this repo</p>
 <ul>
   <li> NavX library </li>
-  <li> CTRe library </li>
+  <li> CTRe Phoenix library </li>
   <li> REV Robotics SparkMAX library </li>
 </li>

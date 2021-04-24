@@ -3,18 +3,20 @@ package frc.robot;
 public class RobotMap {
     //Ports On Robot
     //What Type Of Port
-    final public int DIO1 = 1;
-    final public int PWM1 = 1;
-    final public int CANBUS1 = 1;
-    final public int CANBUS2 = 2;
-    final public int CANBUS3 = 3;
-    final public int CANBUS4 = 4;
+    static final public int DIO1 = 1;
+    static final public int PWM1 = 1;
+    static final public int CANBUS1 = 1;
+    static final public int CANBUS2 = 2;
+    static final public int CANBUS3 = 3;
+	static final public int CANBUS4 = 4;
+	static final public int CANBUS8 = 8;
     
     //Motors
-    final public int DT_LEFT_FORWARD = CANBUS1;
-    final public int DT_LEFT_BACK = CANBUS2;
-    final public int DT_RIGHT_FORWARD = CANBUS3;
-    final public int DT_RIGHT_BACK = CANBUS4;
+    static final public int DT_LEFT_FORWARD = CANBUS1;
+    static final public int DT_LEFT_BACK = CANBUS2;
+    static final public int DT_RIGHT_FORWARD = CANBUS3;
+	static final public int DT_RIGHT_BACK = CANBUS4;
+	static final public int TURRET_SPINNER = CANBUS8;
 
     //Ports Off Robot
 	//Joysticks

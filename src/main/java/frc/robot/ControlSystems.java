@@ -11,43 +11,14 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+public class ControlSystems {
 
+    Joystick rightstick = new Joystick(0);
+    Joystick leftstick = new Joystick(1);
+    Joystick manipulatorStick = new Joystick(2);
 
-public class Robot extends TimedRobot {
-
-
-
-
-  @Override
-  public void robotInit() {
+    public double rightSpeed = rightstick.getY();
+    public double leftSpeed = leftstick.getY();
+    public double manipulatorStickSpeed = manipulatorStick.getY();
     
-    
-  }
-
-  @Override
-  public void robotPeriodic() {
-
-
-    //neoDrive.drive(rightSpeed, leftSpeed, 1.0, true);
-  }
-
-  @Override
-  public void autonomousInit() {
-
-  }
-
-  @Override
-  public void autonomousPeriodic() {
-    
-  }
-
-  @Override
-  public void teleopPeriodic() {
-    
-  }
-
-  @Override
-  public void testPeriodic() {
-    
-  }
 }

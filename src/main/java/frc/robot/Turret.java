@@ -10,12 +10,13 @@ import frc.robot.ControlSystems;
 
 public class Turret extends Container {
     
-
+    
+    //ControlSystems controlSystemsObject  = new ControlSystems();
     public void teleopInit() {
         neoPrototypeMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
     }
 
     public void teleopControl() {
-        neoPrototypeMotor.set(super.ControlSystems.manipulatorStickSpeed());
+        neoPrototypeMotor.set(ControlSystems.getInstance().manipulatorStickSpeed());
     }
-}
+}           

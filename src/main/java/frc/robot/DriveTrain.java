@@ -19,10 +19,24 @@ import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-public class DriveTrain extends DifferentialDrive {
+public class DriveTrain extends Container {
 
-    public DriveTrain(SpeedController leftMotor, SpeedController rightMotor) {
-        super(leftMotor, rightMotor);
+    public DriveTrain() {
+        CANSparkMax rightForward = new CANSparkMax(RobotMap.DT_RIGHT_FORWARD, MotorType.kBrushless);
+        rightForward.setInverted(true);
+        CANSparkMax rightBack = new CANSparkMax(RobotMap.DT_RIGHT_BACK, MotorType.kBrushless);
+        rightBack.setInverted(true);
+        CANSparkMax leftForward = new CANSparkMax(RobotMap.DT_LEFT_FORWARD, MotorType.kBrushless);
+        leftForward.setInverted(false);
+        CANSparkMax leftBack = new CANSparkMax(RobotMap.DT_LEFT_BACK, MotorType.kBrushless);
+        leftBack.setInverted(false);
     }
-
+    @Override
+    public void teleopControl() {
+        double leftInputSpeed = .8 * ControlSystems.getInstance().leftSpeed();
+        double rightInputSpeed = .8 * ControlSystems.getInstance().rightSpeed(); 
+    }
+    @Override
+    public void teleopInit() {
+    }
 }

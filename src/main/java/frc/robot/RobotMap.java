@@ -9,6 +9,9 @@ public class RobotMap {
     static final public int CANBUS2 = 2;
     static final public int CANBUS3 = 3;
 	static final public int CANBUS4 = 4;
+	static final public int CANBUS5 = 5;
+	static final public int CANBUS6 = 6;
+	static final public int CANBUS7 = 7;
 	static final public int CANBUS8 = 8;
     
     //Motors
@@ -16,6 +19,9 @@ public class RobotMap {
     static final public int DT_LEFT_BACK = CANBUS2;
     static final public int DT_RIGHT_FORWARD = CANBUS3;
 	static final public int DT_RIGHT_BACK = CANBUS4;
+	static final public int UPPER_SHOOTER = CANBUS5;
+	static final public int LOWER_SHOOTER = CANBUS6;
+	//static final public int PLACEHOLDER = CANBUS7;
 	static final public int TURRET_SPINNER = CANBUS8;
 
     //Ports Off Robot

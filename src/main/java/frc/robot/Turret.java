@@ -13,10 +13,10 @@ public class Turret extends Container {
     
     //ControlSystems controlSystemsObject  = new ControlSystems();
     public void teleopInit() {
-        neoPrototypeMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
+        neoTurretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
     }
 
     public void teleopControl() {
-        neoPrototypeMotor.set(ControlSystems.getInstance().manipulatorStickSpeed());
+        neoTurretMotor.set(ControlSystems.getInstance().manipulatorStickTwist() * 0.5);
     }
 }           

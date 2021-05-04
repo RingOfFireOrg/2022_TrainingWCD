@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.vision.VisionPipeline;
 import edu.wpi.first.wpilibj.Joystick;
+
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -33,6 +36,13 @@ public class ControlSystems {
     public double manipulatorStickSpeed() {
         return manipulatorStick.getY();
     }
+    public double manipulatorStickTwist() {
+        return manipulatorStick.getTwist();
+    }
+    public Boolean manipulatorStickTrigger() {
+        return manipulatorStick.getTrigger();
+    }
+
     public static ControlSystems getInstance() {
         if (thetrueControlSystem != null) {
             return thetrueControlSystem;

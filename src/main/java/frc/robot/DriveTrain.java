@@ -21,6 +21,9 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveTrain extends Container {
 
+    SpeedControllerGroup leftMotors, rightMotors;
+    private CANEncoder leftEncoder, rightEncoder;
+
     public DriveTrain() {
         CANSparkMax rightForward = new CANSparkMax(RobotMap.DT_RIGHT_FORWARD, MotorType.kBrushless);
         rightForward.setInverted(true);
@@ -30,11 +33,23 @@ public class DriveTrain extends Container {
         leftForward.setInverted(false);
         CANSparkMax leftBack = new CANSparkMax(RobotMap.DT_LEFT_BACK, MotorType.kBrushless);
         leftBack.setInverted(false);
+        rightMotors = new SpeedControllerGroup(rightForward, rightBack);
+        leftMotors = new SpeedControllerGroup(leftForward, leftBack);
     }
+  /*  public double getLeftInches() {
+        return leftEncoder.getPosition() / RobotMap.DRIVEBASE_GEAR_RATIO * Math.PI * RobotMap.DRIVE_WHEEL_DIAMETER_IN;
+    }
+
+    public double getRightInches() {
+        return rightEncoder.getPosition() / RobotMap.DRIVEBASE_GEAR_RATIO * Math.PI * RobotMap.DRIVE_WHEEL_DIAMETER_IN;
+    }*/
+
     @Override
     public void teleopControl() {
         double leftInputSpeed = .8 * ControlSystems.getInstance().leftSpeed();
-        double rightInputSpeed = .8 * ControlSystems.getInstance().rightSpeed(); 
+        double rightInputSpeed = .8 * ControlSystems.getInstance().rightSpeed();
+        rightMotors.set(rightInputSpeed);
+        leftMotors.set(leftInputSpeed);
     }
     @Override
     public void teleopInit() {

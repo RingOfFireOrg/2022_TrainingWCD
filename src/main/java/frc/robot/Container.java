@@ -19,7 +19,7 @@ abstract public class Container {
     public CANSparkMax backLeftMotor;
     public CANSparkMax upperShooter;
     public CANSparkMax lowerShooter;
-    public CANSparkMax neoTurretMotor;
+    public CANSparkMax turretMotor;
 
     abstract public void teleopControl();
     abstract public void teleopInit();

@@ -25,7 +25,6 @@ public class Shooter extends Container{
     }*/
 
     public void teleopInit() {
-     
     }
 
     public void teleopControl() {

@@ -27,7 +27,9 @@ public class Shooter extends TeleopModule{
 
     public void teleopControl() {
         Container.getInstance().upperShooter.set(ControlSystems.getInstance().manipulatorStickSpeed() * upperShooterCoefficient);
-        Container.getInstance().lowerShooter.set(ControlSystems.getInstance().manipulatorStickSpeed() * lowerShooterCoefficient);
 
+        if(ControlSystems.getInstance().manipulatorStickTrigger()) {
+            Container.getInstance().lowerShooter.set(ControlSystems.getInstance().manipulatorStickSpeed() * lowerShooterCoefficient);
+        }
     }
 }

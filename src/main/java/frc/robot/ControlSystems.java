@@ -1,18 +1,10 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.SerialPort;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.vision.VisionPipeline;
 import edu.wpi.first.wpilibj.Joystick;
-
-import javax.swing.text.StyledEditorKit.BoldAction;
-
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class ControlSystems {
     
@@ -20,6 +12,7 @@ public class ControlSystems {
     Joystick rightstick;
     Joystick leftstick;
     Joystick manipulatorStick;
+    XboxController manipulatorController;
 
     public ControlSystems() {
 
@@ -41,6 +34,21 @@ public class ControlSystems {
     }
     public Boolean manipulatorStickTrigger() {
         return manipulatorStick.getTrigger();
+    }
+    public double gamepadLeftY() {
+        return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_LEFT_JOYSTICK_Y);
+    }
+
+    public double gamepadRightY() {
+        return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_JOYSTICK_Y);
+    }
+
+    public double gamepadLeftTrigger() {
+        return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_LEFT_TRIGGER);
+    }
+
+    public double gamepadRightTrigger() {
+        return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_TRIGGER);
     }
 
     public static ControlSystems getInstance() {

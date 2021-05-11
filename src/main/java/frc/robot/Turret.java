@@ -8,15 +8,14 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.ControlSystems;
 
-public class Turret extends Container {
+public class Turret extends TeleopModule {
     
     
     //ControlSystems controlSystemsObject  = new ControlSystems();
     public void teleopInit() {
-        turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
     }
 
     public void teleopControl() {
-        turretMotor.set(ControlSystems.getInstance().manipulatorStickTwist() * 0.5);
+        Container.getInstance().turretMotor.set(ControlSystems.getInstance().manipulatorStickTwist() * 0.5);
     }
 }           

@@ -1,6 +1,6 @@
 package frc.robot;
 
-public class Autonomous {
+public class Autonomous{
     Autonomous () {
 
     }

@@ -15,35 +15,47 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Robot extends TimedRobot {
 
-
+protected DriveTrain driveTrain;
+protected Turret turret;
+protected Shooter shooter;
+protected Vision vision;
+protected Autonomous auto;
 
 
   @Override
   public void robotInit() {
-    
-    
+    driveTrain = new DriveTrain();
+    turret = new Turret();
+    shooter = new Shooter();
+    vision = new Vision();
+    auto = new Autonomous();
+
+    driveTrain.teleopInit();
+    turret.teleopInit();
+    shooter.teleopInit();
+    //vision.teleopInit();
   }
 
   @Override
   public void robotPeriodic() {
-
-
-    //neoDrive.drive(rightSpeed, leftSpeed, 1.0, true);
   }
 
   @Override
   public void autonomousInit() {
-
+    auto.autonomousInit();
   }
 
   @Override
   public void autonomousPeriodic() {
-    
+    auto.autonomousPeriodic();
   }
 
   @Override
   public void teleopPeriodic() {
-    
+    driveTrain.teleopControl();
+    turret.teleopControl();
+    shooter.teleopControl();
+    //vision.teleopControl();
   }
 
   @Override

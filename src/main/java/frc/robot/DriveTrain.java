@@ -19,22 +19,14 @@ import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-public class DriveTrain extends Container {
+public class DriveTrain extends TeleopModule {
 
     SpeedControllerGroup leftMotors, rightMotors;
     private CANEncoder leftEncoder, rightEncoder;
 
     public DriveTrain() {
-        CANSparkMax rightForward = new CANSparkMax(RobotMap.DT_RIGHT_FORWARD, MotorType.kBrushless);
-        rightForward.setInverted(true);
-        CANSparkMax rightBack = new CANSparkMax(RobotMap.DT_RIGHT_BACK, MotorType.kBrushless);
-        rightBack.setInverted(true);
-        CANSparkMax leftForward = new CANSparkMax(RobotMap.DT_LEFT_FORWARD, MotorType.kBrushless);
-        leftForward.setInverted(false);
-        CANSparkMax leftBack = new CANSparkMax(RobotMap.DT_LEFT_BACK, MotorType.kBrushless);
-        leftBack.setInverted(false);
-        rightMotors = new SpeedControllerGroup(rightForward, rightBack);
-        leftMotors = new SpeedControllerGroup(leftForward, leftBack);
+        rightMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor, Container.getInstance().frontRightMotor);
+        leftMotors = new SpeedControllerGroup(Container.getInstance().backLeftMotor, Container.getInstance().backRightMotor);
     }
   /*  public double getLeftInches() {
         return leftEncoder.getPosition() / RobotMap.DRIVEBASE_GEAR_RATIO * Math.PI * RobotMap.DRIVE_WHEEL_DIAMETER_IN;

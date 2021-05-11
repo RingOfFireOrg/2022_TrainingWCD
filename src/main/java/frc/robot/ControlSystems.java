@@ -13,12 +13,17 @@ public class ControlSystems {
     Joystick leftstick;
     Joystick manipulatorStick;
     XboxController manipulatorController;
+    public JoystickButton indexerIn, indexerOut, intakeForward, intakeReverse;
 
     public ControlSystems() {
-
         rightstick = new Joystick(0);
         leftstick = new Joystick(1);
         manipulatorStick = new Joystick(2);
+
+        indexerOut = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_LEFT_BUMPER);
+        indexerIn = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
+        intakeForward = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_A_BUTTON);
+        intakeReverse = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_B_BUTTON);
     }
     public double rightSpeed() {
         return rightstick.getY();
@@ -38,19 +43,15 @@ public class ControlSystems {
     public double gamepadLeftY() {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_LEFT_JOYSTICK_Y);
     }
-
     public double gamepadRightY() {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_JOYSTICK_Y);
     }
-
     public double gamepadLeftTrigger() {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_LEFT_TRIGGER);
     }
-
     public double gamepadRightTrigger() {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_TRIGGER);
     }
-
     public static ControlSystems getInstance() {
         if (thetrueControlSystem != null) {
             return thetrueControlSystem;
@@ -60,5 +61,4 @@ public class ControlSystems {
             return thetrueControlSystem;
         }
     }
-
 }

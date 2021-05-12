@@ -20,6 +20,7 @@ protected Turret turret;
 protected Shooter shooter;
 protected Vision vision;
 protected Autonomous auto;
+protected Intake intake;
 
 
   @Override
@@ -29,11 +30,13 @@ protected Autonomous auto;
     shooter = new Shooter();
     vision = new Vision();
     auto = new Autonomous();
+    intake = new Intake();
 
     driveTrain.teleopInit();
     turret.teleopInit();
     shooter.teleopInit();
     //vision.teleopInit();
+    intake.teleopInit();
   }
 
   @Override
@@ -55,6 +58,7 @@ protected Autonomous auto;
     driveTrain.teleopControl();
     turret.teleopControl();
     shooter.teleopControl();
+    intake.teleopControl();
     //vision.teleopControl();
   }
 

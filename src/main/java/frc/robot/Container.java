@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class Container {
   
@@ -14,6 +16,7 @@ public class Container {
     public CANSparkMax backLeftMotor;
     public CANSparkMax upperShooter;
     public CANSparkMax lowerShooter;
+    public TalonSRX intake;
     public CANSparkMax turretMotor;
     private static Container theTrueContainer;
 
@@ -29,6 +32,7 @@ public class Container {
         upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
         lowerShooter = new CANSparkMax(RobotMap.LOWER_SHOOTER, MotorType.kBrushless);
         turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
+        intake = new TalonSRX(RobotMap.INTAKE);
     }
 
     public static Container getInstance() {

@@ -6,6 +6,14 @@ public class Intake extends TeleopModule{
     
     private double intakeInSpeed = 0.6;
     private double intakeOutSpeed = -0.6;
+    public enum IntakeModes {
+        OUT, IN, OFF
+    }
+
+    IntakeModes mode;
+
+    public Intake() {
+    }
 
     public void teleopInit() {
     }

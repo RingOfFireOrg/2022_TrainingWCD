@@ -9,8 +9,8 @@ public class Shooter extends TeleopModule{
     }
 
     /*public void lowerTrigger() {
-        if manipulatorStickTrigger() {
-            lowerShooter.set(ControlSystems.getInstance().manipulatorStickSpeed());
+        if (ControlSystems.getInstance().) {
+            Container.getInstance().lowerShooter.set(ControlSystems.getInstance().manipulatorStickSpeed() * lowerShooterCoefficient);
         }
     }*/
 
@@ -18,11 +18,11 @@ public class Shooter extends TeleopModule{
     }
 
     public void teleopControl() {
-        Container.getInstance().upperShooter.set(ControlSystems.getInstance().manipulatorStickSpeed() * upperShooterCoefficient);
+        Container.getInstance().upperShooter.set(ControlSystems.getInstance().gamepadRightTrigger() * upperShooterCoefficient);
 
         if(ControlSystems.getInstance().manipulatorStickTrigger()) {
-            Container.getInstance().lowerShooter.set(ControlSystems.getInstance().manipulatorStickSpeed() * lowerShooterCoefficient);
+            Container.getInstance().lowerShooter.set(ControlSystems.getInstance().gamepadLeftTrigger() * lowerShooterCoefficient);
         }
-        
+
     }
 }

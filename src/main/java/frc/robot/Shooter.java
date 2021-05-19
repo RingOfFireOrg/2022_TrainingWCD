@@ -17,12 +17,12 @@ public class Shooter extends TeleopModule{
     public void teleopInit() {
     }
 
-    public void teleopControl() {
+    public void teleopControl() {/*
         Container.getInstance().upperShooter.set(ControlSystems.getInstance().gamepadRightTrigger() * upperShooterCoefficient);
 
         if(ControlSystems.getInstance().manipulatorStickTrigger()) {
             Container.getInstance().lowerShooter.set(ControlSystems.getInstance().gamepadLeftTrigger() * lowerShooterCoefficient);
         }
-
+*/
     }
 }

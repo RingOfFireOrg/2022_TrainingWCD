@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -26,9 +27,15 @@ public class ControlSystems {
         intakeReverse = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_B_BUTTON);
     }
     public double rightSpeed() {
+        if (Math.abs(rightstick.getY()) < .1) {
+            return 0;
+        }
         return rightstick.getY();
     } 
     public double leftSpeed() {
+        if (Math.abs(leftstick.getY()) < .1) {
+            return 0;
+        }
         return leftstick.getY();
     }
     public double manipulatorStickSpeed() {

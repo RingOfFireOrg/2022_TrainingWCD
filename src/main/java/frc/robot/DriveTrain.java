@@ -25,8 +25,8 @@ public class DriveTrain extends TeleopModule {
     private CANEncoder leftEncoder, rightEncoder;
 
     public DriveTrain() {
-        rightMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor, Container.getInstance().frontRightMotor);
-        leftMotors = new SpeedControllerGroup(Container.getInstance().backLeftMotor, Container.getInstance().backRightMotor);
+        rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor, Container.getInstance().backRightMotor);
+        leftMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor, Container.getInstance().backLeftMotor);
     }
   /*  public double getLeftInches() {
         return leftEncoder.getPosition() / RobotMap.DRIVEBASE_GEAR_RATIO * Math.PI * RobotMap.DRIVE_WHEEL_DIAMETER_IN;

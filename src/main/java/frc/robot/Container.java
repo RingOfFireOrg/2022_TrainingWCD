@@ -24,15 +24,15 @@ public class Container {
         frontLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_FORWARD, MotorType.kBrushless);
         frontLeftMotor.setInverted(false);
         frontRightMotor = new CANSparkMax(RobotMap.DT_RIGHT_FORWARD, MotorType.kBrushless);
-        frontRightMotor.setInverted(false);
+        frontRightMotor.setInverted(true);
         backRightMotor = new CANSparkMax(RobotMap.DT_RIGHT_BACK, MotorType.kBrushless);
-        backRightMotor.setInverted(false);
+        backRightMotor.setInverted(true);
         backLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_BACK, MotorType.kBrushless);
         backLeftMotor.setInverted(false);
-        upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
+        /*upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
         lowerShooter = new CANSparkMax(RobotMap.LOWER_SHOOTER, MotorType.kBrushless);
         turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
-        intake = new TalonSRX(RobotMap.INTAKE);
+        intake = new TalonSRX(RobotMap.INTAKE);*/
     }
 
     public static Container getInstance() {

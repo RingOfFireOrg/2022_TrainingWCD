@@ -15,14 +15,14 @@ public class RobotMap {
 	static final public int CANBUS8 = 8;
     
     //Motors
-    static final public int DT_LEFT_FORWARD = CANBUS1;
-    static final public int DT_LEFT_BACK = CANBUS2;
-    static final public int DT_RIGHT_FORWARD = CANBUS3;
-	static final public int DT_RIGHT_BACK = CANBUS4;
+    static final public int DT_LEFT_FORWARD = CANBUS6;
+    static final public int DT_LEFT_BACK = CANBUS3;
+    static final public int DT_RIGHT_FORWARD = CANBUS2;
+	static final public int DT_RIGHT_BACK = CANBUS1;
 	static final public int UPPER_SHOOTER = CANBUS5;
-	static final public int LOWER_SHOOTER = CANBUS6;
+	//static final public int LOWER_SHOOTER = CANBUS6;
 	static final public int INTAKE = CANBUS7;
-	static final public int TURRET_SPINNER = CANBUS8;
+	//static final public int TURRET_SPINNER = CANBUS8;
 
     //Ports Off Robot
 	//Joysticks

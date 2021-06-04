@@ -22,7 +22,7 @@ public class RobotMap {
 	static final public int LOWER_SHOOTER = CANBUS5;
 	static final public int DT_LEFT_FORWARD = CANBUS6;
 	static final public int INTAKE = PWM1;
-	//static final public int TURRET_SPINNER = CANBUS8;
+	static final public int TURRET_SPINNER = CANBUS7;
 
     //Ports Off Robot
 	//Joysticks

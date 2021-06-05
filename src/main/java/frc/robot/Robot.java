@@ -10,6 +10,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 
 
 
@@ -27,8 +32,8 @@ protected Intake intake;
   public void robotInit() {
     driveTrain = new DriveTrain();
     turret = new Turret();
-    shooter = new Shooter();
     vision = new Vision();
+    shooter = new Shooter();
     auto = new Autonomous();
     intake = new Intake();
 
@@ -55,11 +60,15 @@ protected Intake intake;
 
   @Override
   public void teleopPeriodic() {
-    driveTrain.teleopControl();
-    turret.teleopControl();
-    shooter.teleopControl();
-    intake.teleopControl();
+   // driveTrain.teleopControl();
+    //turret.teleopControl();
+    //shooter.teleopControl();
+    //intake.teleopControl();
     //vision.teleopControl();
+
+
+
+    vision.updateVisionVals();
   }
 
   @Override

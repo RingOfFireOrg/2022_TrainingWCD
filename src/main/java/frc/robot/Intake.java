@@ -19,14 +19,14 @@ public class Intake extends TeleopModule{
     }
 
     public void teleopControl() {
-        /*if(ControlSystems.getInstance().intakeForward.get()) {
-            Container.getInstance().intake.set(ControlMode.PercentOutput, intakeInSpeed);
+        if(ControlSystems.getInstance().intakeForward.get()) {
+            Container.getInstance().intake.set(0.6);
         }
         else if (!ControlSystems.getInstance().intakeReverse.get()) {
-            Container.getInstance().intake.set(ControlMode.PercentOutput, intakeOutSpeed);
+            Container.getInstance().intake.set(-0.6);
         }
         else {
-            Container.getInstance().intake.set(ControlMode.PercentOutput, 0);
-        }*/
+            Container.getInstance().intake.set(0);
+        }
 }
 }

@@ -63,7 +63,7 @@ protected Intake intake;
    // driveTrain.teleopControl();
     //turret.teleopControl();
     //shooter.teleopControl();
-    //intake.teleopControl();
+    intake.teleopControl();
     //vision.teleopControl();
 
 

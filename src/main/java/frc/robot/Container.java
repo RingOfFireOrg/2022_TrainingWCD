@@ -7,6 +7,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import edu.wpi.first.wpilibj.VictorSP;
 
 public class Container {
   
@@ -16,12 +17,12 @@ public class Container {
     public CANSparkMax backLeftMotor;
     public CANSparkMax upperShooter;
     public CANSparkMax lowerShooter;
-    public TalonSRX intake;
+    public VictorSP intake;
     public CANSparkMax turretMotor;
     private static Container theTrueContainer;
 
     private Container() {
-        frontLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_FORWARD, MotorType.kBrushless);
+        /*frontLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_FORWARD, MotorType.kBrushless);
         frontLeftMotor.setInverted(false);
         frontRightMotor = new CANSparkMax(RobotMap.DT_RIGHT_FORWARD, MotorType.kBrushless);
         frontRightMotor.setInverted(true);
@@ -29,10 +30,10 @@ public class Container {
         backRightMotor.setInverted(true);
         backLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_BACK, MotorType.kBrushless);
         backLeftMotor.setInverted(false);
-        /*upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
+        upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
         lowerShooter = new CANSparkMax(RobotMap.LOWER_SHOOTER, MotorType.kBrushless);
-        turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
-        intake = new TalonSRX(RobotMap.INTAKE);*/
+        turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);*/
+        intake = new VictorSP(RobotMap.INTAKE);
     }
 
     public static Container getInstance() {

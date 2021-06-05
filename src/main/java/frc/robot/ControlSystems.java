@@ -19,7 +19,8 @@ public class ControlSystems {
     public ControlSystems() {
         rightstick = new Joystick(0);
         leftstick = new Joystick(1);
-        manipulatorStick = new Joystick(2);
+        //manipulatorStick = new Joystick(2);
+        manipulatorController = new XboxController(2);
 
         indexerOut = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_LEFT_BUMPER);
         indexerIn = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_RIGHT_BUMPER);

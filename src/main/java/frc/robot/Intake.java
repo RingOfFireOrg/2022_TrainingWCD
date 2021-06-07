@@ -29,5 +29,5 @@ public class Intake extends TeleopModule{
             Container.getInstance().intake.set(0);
         }
         //Container.getInstance().intake.set(ControlSystems.getInstance().manipulatorStickSpeed());
-}
+    }
 }

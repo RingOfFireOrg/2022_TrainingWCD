@@ -4,6 +4,8 @@ import com.revrobotics.CANEncoder;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SerialPort;
 
 public class Autonomous {
     SpeedControllerGroup leftMotors, rightMotors;
@@ -12,10 +14,13 @@ public class Autonomous {
     double FEET = 8.50; // To go one FEET, the robot encoder has to read ~8.50 inches of the wheel
     int leftEncoderOffset = 0;
     int rightEncoderOffset = 0;
+    public AHRS ahrs;
 
     public void autonomousInit() {
         rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor, Container.getInstance().backRightMotor);
         leftMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor, Container.getInstance().backLeftMotor);
+        ahrs = new AHRS(SerialPort.Port.kUSB);
+		ahrs.reset();
     }
 
     public double howFarLeft() {

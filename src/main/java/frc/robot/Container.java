@@ -25,19 +25,19 @@ public class Container {
     private static Container theTrueContainer;
 
     private Container() {
-        /*frontLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_FORWARD, MotorType.kBrushless);
-        frontLeftMotor.setInverted(false);
+        frontLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_FORWARD, MotorType.kBrushless);
+        frontLeftMotor.setInverted(true);
         frontRightMotor = new CANSparkMax(RobotMap.DT_RIGHT_FORWARD, MotorType.kBrushless);
-        frontRightMotor.setInverted(true);
+        frontRightMotor.setInverted(false);
         backRightMotor = new CANSparkMax(RobotMap.DT_RIGHT_BACK, MotorType.kBrushless);
-        backRightMotor.setInverted(true);
+        backRightMotor.setInverted(false);
         backLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_BACK, MotorType.kBrushless);
-        backLeftMotor.setInverted(false);
+        backLeftMotor.setInverted(true);
         leftEncoder = frontLeftMotor.getEncoder();
         rightEncoder = frontRightMotor.getEncoder();
-        upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
+        /*upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
         lowerShooter = new CANSparkMax(RobotMap.LOWER_SHOOTER, MotorType.kBrushless);
-        turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
+        turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);*/
         intake = new VictorSP(RobotMap.INTAKE);
     }
     public double getLeftInches() {

@@ -1,6 +1,6 @@
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
+import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 public class Intake extends TeleopModule{
     
@@ -13,21 +13,34 @@ public class Intake extends TeleopModule{
     IntakeModes mode;
 
     public Intake() {
+        mode = IntakeModes.OFF;
     }
 
     public void teleopInit() {
     }
-
+    @Override
     public void teleopControl() {
         if(ControlSystems.getInstance().intakeForward.get()) {
+            mode = IntakeModes.IN;
+        }
+        else if(ControlSystems.getInstance().intakeReverse.get()) {
+            mode = IntakeModes.OUT;
+        }
+        else {
+            mode = IntakeModes.OFF;
+        }
+        //Container.getInstance().intake.set(ControlSystems.getInstance().manipulatorStickSpeed());
+    }
+    @Override
+    public void periodic() {
+        if(mode == IntakeModes.IN) {
             Container.getInstance().intake.set(intakeInSpeed);
         }
-        else if (ControlSystems.getInstance().intakeReverse.get()) {
+        else if(mode == IntakeModes.OUT) {
             Container.getInstance().intake.set(intakeOutSpeed);
         }
         else {
             Container.getInstance().intake.set(0);
-        }
-        //Container.getInstance().intake.set(ControlSystems.getInstance().manipulatorStickSpeed());
+        } 
     }
 }

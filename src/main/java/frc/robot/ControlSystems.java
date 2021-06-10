@@ -13,19 +13,22 @@ public class ControlSystems {
     Joystick rightstick;
     Joystick leftstick;
     Joystick manipulatorStick;
+    XboxController driverController;
     XboxController manipulatorController;
-    public JoystickButton indexerIn, indexerOut, intakeForward, intakeReverse;
+    public JoystickButton indexerIn, indexerOut, intakeForward, intakeReverse, halfSpeed;
 
     public ControlSystems() {
         rightstick = new Joystick(0);
         leftstick = new Joystick(1);
-
+        driverController = new XboxController(3);
         manipulatorController = new XboxController(2);
 
         indexerOut = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_LEFT_BUMPER);
         indexerIn = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
         intakeForward = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_A_BUTTON);
         intakeReverse = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_B_BUTTON);
+
+        halfSpeed = new JoystickButton(driverController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
     }
     public double rightSpeed() {
         if (Math.abs(rightstick.getY()) < .1) {
@@ -48,11 +51,17 @@ public class ControlSystems {
     public Boolean manipulatorStickTrigger() {
         return manipulatorStick.getTrigger();
     }
-    public double gamepadLeftY() {
+    public double mGamepadLeftY() {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_LEFT_JOYSTICK_Y);
     }
-    public double gamepadRightY() {
+    public double mGamepadRightY() {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_JOYSTICK_Y);
+    }
+    public double dGamepadLeftY() {
+        return driverController.getRawAxis(RobotMap.MANIPULATOR_LEFT_JOYSTICK_Y);
+    }
+    public double dGamepadRightY() {
+        return driverController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_JOYSTICK_Y);
     }
     public double gamepadLeftTrigger() {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_LEFT_TRIGGER);

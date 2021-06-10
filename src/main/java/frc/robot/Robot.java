@@ -40,12 +40,12 @@ protected Intake intake;
     driveTrain.teleopInit();
     turret.teleopInit();
     shooter.teleopInit();
-    //vision.teleopInit();
     intake.teleopInit();
   }
 
   @Override
   public void robotPeriodic() {
+    intake.periodic();
   }
 
   @Override
@@ -60,11 +60,10 @@ protected Intake intake;
 
   @Override
   public void teleopPeriodic() {
-   // driveTrain.teleopControl();
+    driveTrain.teleopControl();
     //turret.teleopControl();
     //shooter.teleopControl();
     intake.teleopControl();
-    //vision.teleopControl();
 
 
 

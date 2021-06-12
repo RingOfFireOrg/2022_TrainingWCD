@@ -1,8 +1,6 @@
 package frc.robot;
 
-import javax.annotation.OverridingMethodsMustInvokeSuper;
-
-public class Intake extends TeleopModule{
+public class Intake extends TeleopModule{    
     
     private double intakeInSpeed = 1;
     private double intakeOutSpeed = -1;
@@ -39,7 +37,7 @@ public class Intake extends TeleopModule{
         else if(mode == IntakeModes.OUT) {
             Container.getInstance().intake.set(intakeOutSpeed);
         }
-        else {
+        else if (mode == IntakeModes.OFF) {
             Container.getInstance().intake.set(0);
         } 
     }

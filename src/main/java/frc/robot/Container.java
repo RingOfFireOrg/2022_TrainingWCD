@@ -8,6 +8,9 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SerialPort;
+
 import edu.wpi.first.wpilibj.VictorSP;
 
 public class Container {
@@ -23,6 +26,7 @@ public class Container {
     public CANSparkMax turretMotor;
     public CANEncoder leftEncoder, rightEncoder;
     private static Container theTrueContainer;
+    public AHRS ahrs;
 
     private Container() {
         frontLeftMotor = new CANSparkMax(RobotMap.DT_LEFT_FORWARD, MotorType.kBrushless);
@@ -39,7 +43,11 @@ public class Container {
         lowerShooter = new CANSparkMax(RobotMap.LOWER_SHOOTER, MotorType.kBrushless);
         turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);*/
         intake = new VictorSP(RobotMap.INTAKE);
+
+        ahrs = new AHRS(SerialPort.Port.kUSB);
+		ahrs.reset();
     }
+    
     public double getLeftInches() {
         return leftEncoder.getPosition() / RobotMap.DRIVEBASE_GEAR_RATIO * Math.PI * RobotMap.DRIVE_WHEEL_DIAMETER_IN;
     }
@@ -57,4 +65,5 @@ public class Container {
             return theTrueContainer;
         }
     }
+    
 }

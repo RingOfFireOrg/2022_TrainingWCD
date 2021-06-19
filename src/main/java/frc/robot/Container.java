@@ -39,9 +39,9 @@ public class Container {
         backLeftMotor.setInverted(true);
         leftEncoder = frontLeftMotor.getEncoder();
         rightEncoder = frontRightMotor.getEncoder();
-        /*upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
+        upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
         lowerShooter = new CANSparkMax(RobotMap.LOWER_SHOOTER, MotorType.kBrushless);
-        turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);*/
+        turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
         intake = new VictorSP(RobotMap.INTAKE);
 
         ahrs = new AHRS(SerialPort.Port.kUSB);

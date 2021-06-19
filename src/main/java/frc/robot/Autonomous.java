@@ -1,9 +1,13 @@
 package frc.robot;
 
 import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Intake.IntakeModes;
+
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.networktables.NetworkTable;
@@ -12,20 +16,34 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.SerialPort;
 
 public class Autonomous {
-    SpeedControllerGroup leftMotors, rightMotors;
+    private SpeedControllerGroup leftMotors, rightMotors;
     private CANEncoder leftEncoder, rightEncoder;
-    int autonomousStep = -1;
-    double FEET = 8.50; // To go one FEET, the robot encoder has to read ~8.50 inches of the wheel
-    double leftEncoderOffset = 0;
-    double rightEncoderOffset = 0;
-    
-    double rotateToAngleRate;
-    float directionOffset = 0;
-    Vision vision;
+    private int autonomousStep = -1;
+    private double FEET = 8.50; // To go one FEET, the robot encoder has to read ~8.50 inches of the wheel
+    private double leftEncoderOffset = 0;
+    private double rightEncoderOffset = 0;
+
+    private double rotateToAngleRate;
+    private float directionOffset = 0;
+    private Vision vision;
+
+    private VictorSP intake;
+    private CANSparkMax lowerShooter;
+    private CANSparkMax upperShooter;
+
+    private int shooterTimer = 0;
+
+
     public void autonomousInit() {
         vision = new Vision();
-        rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor, Container.getInstance().backRightMotor);
-        leftMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor, Container.getInstance().backLeftMotor);
+        rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor,
+                Container.getInstance().backRightMotor);
+        leftMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor,
+                Container.getInstance().backLeftMotor);
+
+        intake = Container.getInstance().intake;
+        lowerShooter = Container.getInstance().lowerShooter;
+        upperShooter = Container.getInstance().upperShooter;
     }
 
     public double howFarLeft() {
@@ -33,6 +51,13 @@ public class Autonomous {
     }
     public double howFarRight() {
         return Container.getInstance().getRightInches()-rightEncoderOffset;
+    }
+
+    public double howFarLeftReal() {
+        return Container.getInstance().getLeftInches();
+    }
+    public double howFarRightReal() {
+        return Container.getInstance().getRightInches();
     }
 
     public void moveForward() {
@@ -44,12 +69,12 @@ public class Autonomous {
         rightMotors.set(0.3);
     }
     public void turnLeft() {
-        leftMotors.set(0.15);
-        rightMotors.set(-0.15);
+        leftMotors.set(0.1);
+        rightMotors.set(-0.1);
     }
     public void turnRight() {
-        leftMotors.set(-0.15);
-        rightMotors.set(0.15);
+        leftMotors.set(-0.1);
+        rightMotors.set(0.1);
     }
     public void moveStop() {
         leftMotors.set(0);
@@ -57,19 +82,26 @@ public class Autonomous {
     }
 
     public void resetEncoders() {
-        leftEncoderOffset = howFarLeft();
-        rightEncoderOffset = howFarRight();
+        leftEncoderOffset = howFarLeftReal();
+        rightEncoderOffset = howFarRightReal();
     }
 
     public void resetNavX() {
-        directionOffset = getabsoluteDirection();
+        directionOffset = getrealabsoluteDirection();
     }
 
     public float getabsoluteDirection() {
         return Container.getInstance().ahrs.getYaw()-directionOffset;
     }
 
-    
+    public float getrealabsoluteDirection() {
+        return Container.getInstance().ahrs.getYaw();
+    }
+
+    public void Shoot() {
+        lowerShooter.set(Shooter.lowerShooterCoefficient);
+        upperShooter.set(Shooter.upperShooterCoefficient);
+    }
 
     
 
@@ -78,6 +110,7 @@ public class Autonomous {
     public void autonomousPeriodic() {
         // Write the actual auto code here
         double[] visionVals = vision.updateVisionVals();
+        
         switch (autonomousStep) {
             case -1: {
                 //Setup
@@ -89,62 +122,68 @@ public class Autonomous {
             case 0: {     
                 //Turn to target
                 
-                //To do: see if a target was found before adding to autonomous step
+                autonomousStep++;
 
-                if (visionVals[0] > -5 && visionVals[0] < 5){
-                    autonomousStep++;
+                /*if (visionVals[0] > -5 && visionVals[0] < 5){
+                    if(visionVals[3] == 1){
+                        autonomousStep++;
+                    }
                 }else if(visionVals[0] < -5){
                     turnLeft();
                 }else{
                     turnRight();
-                }
+                }*/
 
                 break;
             }
             case 1: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+                //resetNavX();
                 autonomousStep++;
                 break;
             }
             case 2: {
                 //Transfer and Shoot (3 balls)
                 
-                //When done:
+                //Currently a placeholder to test vision
+                
+                Shoot();
+
+                if(shooterTimer > 180){
+                    shooterTimer = 0;
                     autonomousStep++;
+                }
+
+                shooterTimer++;
 
                 break;
             }
             case 3: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
                 autonomousStep++;
                 break;
             }
             case 4: {
                 //Right 90 degrees
-                
                 turnRight();
                 
-                if(getabsoluteDirection() > 75){
-                    autonomousStep++; 
+                if(getabsoluteDirection() > 77){
+                    autonomousStep++;
                 }
                 break;
             }
             case 5: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+
                 autonomousStep++;
                 break;
             }
             case 6: {
                 //Forward 5.2'
+                
                 moveForward();
 
-                if (howFarRight() > FEET/2){
+                if (howFarRight() < -FEET*5.21){
                     autonomousStep++;
                 }
                 
@@ -152,8 +191,8 @@ public class Autonomous {
             }
             case 7: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+                 
+                 
                 autonomousStep++;
                 break;
             }
@@ -161,104 +200,127 @@ public class Autonomous {
                 //Right 90 degrees
                 turnRight();
                 
-                if(getabsoluteDirection() > 75){
-                    autonomousStep++; 
+                if(getabsoluteDirection() > 165){
+                    autonomousStep++;
                 }
                 break;
             }
             case 9: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+                 
                 autonomousStep++;
                 break;
             }
             case 10: {
                 //Forward 16' 2.625"
-                //Intake and Transfer on
+                //Intake
 
-                //Just a placeholder, won't go to next case for now:
-                    moveStop();
+                moveForward();
+
+                if (howFarRight() < -FEET*16.14){
+                    autonomousStep++;
+                }
                 
                 break;
             }
             case 11: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+                
                 autonomousStep++;
                 break;
             }
             case 12: {
                 //Backwards 16' 2.625"
                 
-               
+                moveBackward();
+
+                if (howFarRight() > FEET*16.14){
+                    autonomousStep++;
+                }
                 break;
             }
             case 13: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+                 
                 autonomousStep++;
                 break;
             }
             case 14: {
                 //Left 90 degrees
 
+                turnLeft();
                 
+                if(getabsoluteDirection() < 100){
+                    autonomousStep++; 
+                }
+
                 break;
             }
             case 15: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+                //resetEncoders();
+                 
                 autonomousStep++;
                 break;
             }
             case 16: {
                 //Backwards 5.2'
 
-                
+                moveBackward();
+
+                if (howFarRight() > FEET*5.21){
+                    autonomousStep++;
+                }
+
+                break;
             }
             case 17: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+                 
                 autonomousStep++;
                 break;
             }
             case 18: {
                 //Left 90 degrees
 
+                turnLeft();
                 
+                if(getabsoluteDirection() < 10){
+                    autonomousStep++; 
+                }
+
                 break;
             }
             case 19: {
                 moveStop();
-                resetNavX();
-                resetEncoders();
+                 
                 autonomousStep++;
                 break;
             }
             case 20: {
                 //Transfer and Shoot (3 balls)
                 
-                //When done:
+                Shoot();
+
+                if(shooterTimer > 180){
+                    shooterTimer = 0;
                     autonomousStep++;
+                }
+
+                shooterTimer++;
                 
                 break;
             }
             case 21: {
                 //FINISHED!!!
                 moveStop();
-                resetNavX();
-                resetEncoders();
-                //autonomousStep++;
+                
                 break;
             }
         }
         SmartDashboard.putNumber("How Far left", howFarLeft());
         SmartDashboard.putNumber("How Far right", howFarRight());    
-        SmartDashboard.putNumber("Absolute Direction", getabsoluteDirection());    
+        SmartDashboard.putNumber("Absolute Direction", getabsoluteDirection());
+        SmartDashboard.putNumber("Current Step: ", autonomousStep);
     }
 }

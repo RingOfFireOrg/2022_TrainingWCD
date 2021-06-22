@@ -33,7 +33,6 @@ public class Autonomous {
 
     private int shooterTimer = 0;
 
-
     public void autonomousInit() {
         vision = new Vision();
         rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor,
@@ -61,20 +60,20 @@ public class Autonomous {
     }
 
     public void moveForward() {
-        leftMotors.set(-0.3);
-        rightMotors.set(-0.3);
+        leftMotors.set(-0.2);
+        rightMotors.set(-0.2);
     }
     public void moveBackward() {
-        leftMotors.set(0.3);
-        rightMotors.set(0.3);
+        leftMotors.set(0.2);
+        rightMotors.set(0.2);
     }
     public void turnLeft() {
-        leftMotors.set(0.1);
-        rightMotors.set(-0.1);
+        leftMotors.set(0.075);
+        rightMotors.set(-0.075);
     }
     public void turnRight() {
-        leftMotors.set(-0.1);
-        rightMotors.set(0.1);
+        leftMotors.set(-0.075);
+        rightMotors.set(0.075);
     }
     public void moveStop() {
         leftMotors.set(0);
@@ -102,10 +101,6 @@ public class Autonomous {
         lowerShooter.set(Shooter.lowerShooterCoefficient);
         upperShooter.set(Shooter.upperShooterCoefficient);
     }
-
-    
-
-    
 
     public void autonomousPeriodic() {
         // Write the actual auto code here
@@ -138,23 +133,24 @@ public class Autonomous {
             }
             case 1: {
                 moveStop();
-                //resetNavX();
                 autonomousStep++;
                 break;
             }
             case 2: {
                 //Transfer and Shoot (3 balls)
                 
-                //Currently a placeholder to test vision
+                //Currently commented out for testing the rest of auto
                 
-                Shoot();
+                /*Shoot();
 
                 if(shooterTimer > 180){
                     shooterTimer = 0;
                     autonomousStep++;
                 }
 
-                shooterTimer++;
+                shooterTimer++;*/
+
+                autonomousStep++;
 
                 break;
             }
@@ -167,14 +163,14 @@ public class Autonomous {
                 //Right 90 degrees
                 turnRight();
                 
-                if(getabsoluteDirection() > 77){
+                if(getabsoluteDirection() > 80){
                     autonomousStep++;
                 }
                 break;
             }
             case 5: {
                 moveStop();
-
+                resetEncoders();
                 autonomousStep++;
                 break;
             }
@@ -186,13 +182,15 @@ public class Autonomous {
                 if (howFarRight() < -FEET*5.21){
                     autonomousStep++;
                 }
+                /*if (howFarRight() < -FEET){
+                    autonomousStep++;
+                }*/
                 
                 break;
             }
             case 7: {
                 moveStop();
-                 
-                 
+                
                 autonomousStep++;
                 break;
             }
@@ -200,14 +198,14 @@ public class Autonomous {
                 //Right 90 degrees
                 turnRight();
                 
-                if(getabsoluteDirection() > 165){
+                if(Math.abs(getabsoluteDirection()) > 165){
                     autonomousStep++;
                 }
                 break;
             }
             case 9: {
                 moveStop();
-                 
+                resetEncoders();
                 autonomousStep++;
                 break;
             }
@@ -220,12 +218,15 @@ public class Autonomous {
                 if (howFarRight() < -FEET*16.14){
                     autonomousStep++;
                 }
-                
+                /*if (howFarRight() < -FEET*2){
+                    autonomousStep++;
+                }*/
+
                 break;
             }
             case 11: {
                 moveStop();
-                
+                resetEncoders();
                 autonomousStep++;
                 break;
             }
@@ -237,6 +238,10 @@ public class Autonomous {
                 if (howFarRight() > FEET*16.14){
                     autonomousStep++;
                 }
+                /*if (howFarRight() > FEET*2){
+                    autonomousStep++;
+                }*/
+
                 break;
             }
             case 13: {
@@ -250,7 +255,7 @@ public class Autonomous {
 
                 turnLeft();
                 
-                if(getabsoluteDirection() < 100){
+                if(Math.abs(getabsoluteDirection()) < 100){
                     autonomousStep++; 
                 }
 
@@ -258,7 +263,7 @@ public class Autonomous {
             }
             case 15: {
                 moveStop();
-                //resetEncoders();
+                resetEncoders();
                  
                 autonomousStep++;
                 break;
@@ -271,6 +276,9 @@ public class Autonomous {
                 if (howFarRight() > FEET*5.21){
                     autonomousStep++;
                 }
+                /*if (howFarRight() > FEET){
+                    autonomousStep++;
+                }*/
 
                 break;
             }
@@ -300,14 +308,16 @@ public class Autonomous {
             case 20: {
                 //Transfer and Shoot (3 balls)
                 
-                Shoot();
+                /*Shoot();
 
                 if(shooterTimer > 180){
                     shooterTimer = 0;
                     autonomousStep++;
                 }
 
-                shooterTimer++;
+                shooterTimer++;*/
+
+                autonomousStep++;
                 
                 break;
             }

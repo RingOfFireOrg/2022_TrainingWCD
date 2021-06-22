@@ -23,17 +23,17 @@ public class DriveTrain extends TeleopModule {
 
     SpeedControllerGroup leftMotors, rightMotors;
     private CANEncoder leftEncoder, rightEncoder;
-    private double speedCoefficient = .8;
+    private double speedCoefficient = .4;
 
     public DriveTrain() {
         rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor, Container.getInstance().backRightMotor);
         leftMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor, Container.getInstance().backLeftMotor);
             
         if(ControlSystems.getInstance().halfSpeed.get()){
-            speedCoefficient = .4;
+            speedCoefficient = .2;
         }
         else {
-            speedCoefficient = .8;
+            speedCoefficient = .4;
         }
     }
 

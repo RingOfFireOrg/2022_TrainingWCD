@@ -15,7 +15,7 @@ public class ControlSystems {
     Joystick manipulatorStick;
     XboxController driverController;
     XboxController manipulatorController;
-    public JoystickButton indexerIn, indexerOut, intakeForward, intakeReverse, halfSpeed;
+    public JoystickButton transferIn, transferOut, intakeIn, intakeOut, halfSpeed;
 
     public ControlSystems() {
         rightstick = new Joystick(0);
@@ -23,10 +23,10 @@ public class ControlSystems {
         driverController = new XboxController(3);
         manipulatorController = new XboxController(2);
 
-        indexerOut = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_LEFT_BUMPER);
-        indexerIn = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
-        intakeForward = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_A_BUTTON);
-        intakeReverse = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_B_BUTTON);
+        transferIn = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_LEFT_BUMPER);
+        transferOut = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
+        intakeIn = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_A_BUTTON);
+        intakeOut = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_B_BUTTON);
 
         halfSpeed = new JoystickButton(driverController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
     }

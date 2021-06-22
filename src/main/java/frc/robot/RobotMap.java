@@ -4,7 +4,8 @@ public class RobotMap {
     //Ports On Robot
     //What Type Of Port
     static final public int DIO1 = 1;
-    static final public int PWM1 = 1;
+	static final public int PWM1 = 1;
+	static final public int PWM2 = 2;
     static final public int CANBUS1 = 1;
     static final public int CANBUS2 = 2;
     static final public int CANBUS3 = 3;
@@ -22,6 +23,7 @@ public class RobotMap {
 	static final public int LOWER_SHOOTER = CANBUS5;
 	static final public int DT_LEFT_FORWARD = CANBUS6;
 	static final public int INTAKE = PWM1;
+	static final public int TRANSFER = PWM2;
 	static final public int TURRET_SPINNER = CANBUS7;
 
     //Ports Off Robot

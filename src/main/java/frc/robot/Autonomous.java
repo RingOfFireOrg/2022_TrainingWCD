@@ -61,19 +61,19 @@ public class Autonomous {
 
     public void moveForward() {
         leftMotors.set(-0.2);
-        rightMotors.set(-0.235);
+        rightMotors.set(-0.245);
     }
     public void moveBackward() {
         leftMotors.set(0.2);
-        rightMotors.set(0.235);
+        rightMotors.set(0.245);
     }
     public void turnLeft() {
         leftMotors.set(0.075);
-        rightMotors.set(-0.088);
+        rightMotors.set(-0.092);
     }
     public void turnRight() {
         leftMotors.set(-0.075);
-        rightMotors.set(0.088);
+        rightMotors.set(0.092);
     }
     public void moveStop() {
         leftMotors.set(0);
@@ -164,7 +164,7 @@ public class Autonomous {
                 //Right 90 degrees
                 turnRight();
                 
-                if(getabsoluteDirection() > 80){
+                if(getabsoluteDirection() > 75){
                     autonomousStep++;
                 }
                 break;

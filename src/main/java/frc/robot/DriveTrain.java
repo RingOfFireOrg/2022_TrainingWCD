@@ -24,6 +24,8 @@ public class DriveTrain extends TeleopModule {
     SpeedControllerGroup leftMotors, rightMotors;
     private CANEncoder leftEncoder, rightEncoder;
     private double speedCoefficient = .4;
+    
+    private double motorCoefficient = 1.225;
 
     public DriveTrain() {
         rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor, Container.getInstance().backRightMotor);
@@ -41,7 +43,7 @@ public class DriveTrain extends TeleopModule {
     public void teleopControl() {
         double leftInputSpeed = speedCoefficient * ControlSystems.getInstance().dGamepadLeftY();
         double rightInputSpeed = speedCoefficient * ControlSystems.getInstance().dGamepadRightY();
-        rightMotors.set(rightInputSpeed);
+        rightMotors.set(rightInputSpeed*motorCoefficient);
         leftMotors.set(leftInputSpeed);
     }
     @Override

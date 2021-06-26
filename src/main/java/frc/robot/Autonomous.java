@@ -117,18 +117,18 @@ public class Autonomous {
             case 0: {     
                 //Turn to target
                 
-                autonomousStep++;
+                //autonomousStep++;
 
-                /*if (visionVals[0] > -5 && visionVals[0] < 5){
+                if (visionVals[0] > -3 && visionVals[0] < 3){
                     if(visionVals[3] == 1){
                         moveStop();
                         autonomousStep++;
                     }
-                }else if(visionVals[0] < -5){
+                }else if(visionVals[0] < -3){
                     turnLeft();
                 }else{
                     turnRight();
-                }*/
+                }
 
                 break;
             }
@@ -307,7 +307,31 @@ public class Autonomous {
                 autonomousStep++;
                 break;
             }
-            case 20: {
+            case 20: {     
+                //Turn to target
+                
+                //autonomousStep++;
+
+                if (visionVals[0] > -3 && visionVals[0] < 3){
+                    if(visionVals[3] == 1){
+                        moveStop();
+                        autonomousStep++;
+                    }
+                }else if(visionVals[0] < -3){
+                    turnLeft();
+                }else{
+                    turnRight();
+                }
+
+                break;
+            }
+            case 21: {
+                moveStop();
+                 
+                autonomousStep++;
+                break;
+            }
+            case 22: {
                 //Transfer and Shoot (3 balls)
                 
                 //Shoot();
@@ -323,7 +347,7 @@ public class Autonomous {
                 
                 break;
             }
-            case 21: {
+            case 23: {
                 //FINISHED!!!
                 moveStop();
                 

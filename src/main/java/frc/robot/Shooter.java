@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends TeleopModule {
 
-    static double upperShooterCoefficient = 0.8;
-    static double lowerShooterCoefficient = 0.8;
+    static double upperShooterCoefficient = 1;
+    static double lowerShooterCoefficient = 1;
 
     public Shooter() { 
     }

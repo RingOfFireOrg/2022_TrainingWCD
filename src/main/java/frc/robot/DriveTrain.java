@@ -23,7 +23,7 @@ public class DriveTrain extends TeleopModule {
 
     SpeedControllerGroup leftMotors, rightMotors;
     private CANEncoder leftEncoder, rightEncoder;
-    private double speedCoefficient = .4; //do not go higher than 8
+    private double speedCoefficient = .4;
     private double originalSpeed = speedCoefficient;
     private double motorCoefficient = 1.225;
 

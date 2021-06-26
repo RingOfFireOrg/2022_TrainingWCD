@@ -24,6 +24,7 @@ public class Shooter extends TeleopModule{
         //}
 
     }
+    
     public void periodic() {
         
     }

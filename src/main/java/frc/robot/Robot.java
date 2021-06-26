@@ -65,8 +65,8 @@ protected Transfer transfer;
   @Override
   public void teleopPeriodic() {
     driveTrain.teleopControl();
-    //turret.teleopControl();
-    //shooter.teleopControl();
+    turret.teleopControl();
+    shooter.teleopControl();
     intake.teleopControl();
     transfer.teleopControl();
 

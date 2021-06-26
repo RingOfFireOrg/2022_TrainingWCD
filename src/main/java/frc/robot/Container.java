@@ -26,6 +26,7 @@ public class Container {
     public VictorSP transfer;
     public CANSparkMax turretMotor;
     public CANEncoder leftEncoder, rightEncoder;
+    public CANEncoder lowerShooterEncoder, upperShooterEncoder;
     private static Container theTrueContainer;
     public AHRS ahrs;
 
@@ -46,6 +47,8 @@ public class Container {
         intake = new VictorSP(RobotMap.INTAKE);
         transfer = new VictorSP(RobotMap.TRANSFER);
         ahrs = new AHRS(SerialPort.Port.kUSB);
+        lowerShooterEncoder = lowerShooter.getEncoder();
+        upperShooterEncoder = upperShooter.getEncoder();
 		ahrs.reset();
     }
     

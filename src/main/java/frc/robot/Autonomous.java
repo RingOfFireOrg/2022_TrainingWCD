@@ -354,10 +354,10 @@ public class Autonomous {
                 break;
             }
         }
-        SmartDashboard.putNumber("How Far left", howFarLeft());
+        /*SmartDashboard.putNumber("How Far left", howFarLeft());
         SmartDashboard.putNumber("How Far right", howFarRight());    
-        SmartDashboard.putNumber("Absolute Direction", getabsoluteDirection());
-        SmartDashboard.putNumber("Current Step: ", autonomousStep);
+        SmartDashboard.putNumber("Absolute Direction", getabsoluteDirection());*/
+        SmartDashboard.putNumber("Current Autonomous Step: ", autonomousStep);
     }
 }
 

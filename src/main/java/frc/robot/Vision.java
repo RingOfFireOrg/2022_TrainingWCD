@@ -7,6 +7,8 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class Vision {
     
+    private Autonomous autonomous;
+
     public double[] updateVisionVals() {
 
         NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -29,6 +31,22 @@ public class Vision {
 
         double[] arr = {x, y, area, v};
         return arr;
+
+    }
+
+    public void aimToTarget() {
+        double[] visionVals = updateVisionVals();
+
+        if (visionVals[0] > -3 && visionVals[0] < 3){
+            if(visionVals[3] == 1){
+                autonomous.moveStop();
+                
+            }
+        }else if(visionVals[0] < -3){
+            autonomous.turnLeft();
+        }else{
+            autonomous.turnRight();
+        }
 
     }
 }

@@ -104,7 +104,7 @@ public class Autonomous {
 
     public void autonomousPeriodic() {
         // Write the actual auto code here
-        double[] visionVals = vision.updateVisionVals();
+        //double[] visionVals = vision.updateVisionVals();
         
         switch (autonomousStep) {
             case -1: {
@@ -119,7 +119,7 @@ public class Autonomous {
                 
                 //autonomousStep++;
 
-                if (visionVals[0] > -3 && visionVals[0] < 3){
+                /*if (visionVals[0] > -3 && visionVals[0] < 3){
                     if(visionVals[3] == 1){
                         moveStop();
                         autonomousStep++;
@@ -128,7 +128,9 @@ public class Autonomous {
                     turnLeft();
                 }else{
                     turnRight();
-                }
+                } */
+
+                vision.aimToTarget();
 
                 break;
             }
@@ -312,7 +314,7 @@ public class Autonomous {
                 
                 //autonomousStep++;
 
-                if (visionVals[0] > -3 && visionVals[0] < 3){
+                /*if (visionVals[0] > -3 && visionVals[0] < 3){
                     if(visionVals[3] == 1){
                         moveStop();
                         autonomousStep++;
@@ -321,7 +323,9 @@ public class Autonomous {
                     turnLeft();
                 }else{
                     turnRight();
-                }
+                } */
+
+                vision.aimToTarget();
 
                 break;
             }

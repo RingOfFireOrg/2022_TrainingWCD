@@ -72,7 +72,9 @@ protected Transfer transfer;
 
 
 
-    vision.updateVisionVals();
+    if (ControlSystems.getInstance().aimButton.get()) {
+      vision.aimToTarget();
+    }
   }
 
   @Override

@@ -71,12 +71,17 @@ public class ControlSystems {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_TRIGGER);
     }
     public static ControlSystems getInstance() {
-        if (thetrueControlSystem != null) {
-            return thetrueControlSystem;
-        }                   
-        else {
+        // if (thetrueControlSystem != null) {
+        //     return thetrueControlSystem;
+        // }                   
+        // else {
+        //     thetrueControlSystem = new ControlSystems();
+        //     return thetrueControlSystem;
+        // }
+
+        if (thetrueControlSystem == null) {
             thetrueControlSystem = new ControlSystems();
-            return thetrueControlSystem;
-        }
+        }                   
+        return thetrueControlSystem;
     }
 }

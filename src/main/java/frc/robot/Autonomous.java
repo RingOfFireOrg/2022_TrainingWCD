@@ -104,7 +104,7 @@ public class Autonomous {
 
     public void autonomousPeriodic() {
         // Write the actual auto code here
-        //double[] visionVals = vision.updateVisionVals();
+        double[] visionVals = vision.updateVisionVals();
         
         switch (autonomousStep) {
             case -1: {
@@ -129,8 +129,10 @@ public class Autonomous {
                 }else{
                     turnRight();
                 } */
-
                 vision.aimToTarget();
+                if ((visionVals[0] > -3) && (visionVals[0] < 3) && (visionVals[3] == 1)) {
+                    autonomousStep++;
+                }   
 
                 break;
             }

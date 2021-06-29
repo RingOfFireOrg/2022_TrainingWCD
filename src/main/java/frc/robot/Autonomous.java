@@ -129,8 +129,7 @@ public class Autonomous {
                 }else{
                     turnRight();
                 } */
-                vision.aimToTarget();
-                if ((visionVals[0] > -3) && (visionVals[0] < 3) && (visionVals[3] == 1)) {
+                if (vision.aimToTarget(this)) {
                     autonomousStep++;
                 }   
 
@@ -327,7 +326,9 @@ public class Autonomous {
                     turnRight();
                 } */
 
-                vision.aimToTarget();
+                if (vision.aimToTarget(this)) {
+                    autonomousStep++;
+                }
 
                 break;
             }

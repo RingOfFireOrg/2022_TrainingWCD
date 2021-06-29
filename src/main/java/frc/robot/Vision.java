@@ -6,8 +6,9 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class Vision {
+
+    private final double VISIONRANGE = 3;
     
-    private Autonomous autonomous;
 
     public double[] updateVisionVals() {
 
@@ -34,19 +35,32 @@ public class Vision {
 
     }
 
-    public void aimToTarget() {
+    public boolean aimToTarget(Autonomous auto) {
         double[] visionVals = updateVisionVals();
 
-        if (visionVals[0] > -3 && visionVals[0] < 3){
-            if(visionVals[3] == 1){
-                autonomous.moveStop();
-                
-            }
-        }else if(visionVals[0] < -3){
-            autonomous.turnLeft();
-        }else{
-            autonomous.turnRight();
-        }
+        // if (visionVals[0] > -3 && visionVals[0] < 3){
+        //     if(visionVals[3] == 1){
+        //         auto.moveStop();
+        //         return true;
+        //     }
+        // }else if(visionVals[0] < -3){
+        //     auto.turnLeft();
+        // }else{
+        //     auto.turnRight();
+        // } 
+        // return false;
 
+
+    if (visionVals[0] < -VISIONRANGE) {
+        auto.turnLeft();
+    } else if ( visionVals[0] > VISIONRANGE) {
+        auto.turnRight();
+    }else {
+        if(visionVals[3] == 1){
+            auto.moveStop();
+            return true;
+        }
+    } 
+        return false;
     }
 }

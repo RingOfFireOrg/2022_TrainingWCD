@@ -73,7 +73,7 @@ protected Transfer transfer;
 
 
     if (ControlSystems.getInstance().aimButton.get()) {
-      vision.aimToTarget();
+      vision.aimToTarget(auto);
     }
   }
 

@@ -119,16 +119,9 @@ public class Autonomous {
                 
                 //autonomousStep++;
 
-                if (visionVals[0] > -3 && visionVals[0] < 3){
-                    if(visionVals[3] == 1){
-                        moveStop();
-                        autonomousStep++;
-                    }
-                }else if(visionVals[0] < -3){
-                    turnLeft();
-                }else{
-                    turnRight();
-                }
+                // if (vision.aimToTarget(this)) {
+                //     autonomousStep++;
+                // }
 
                 break;
             }
@@ -312,16 +305,9 @@ public class Autonomous {
                 
                 //autonomousStep++;
 
-                if (visionVals[0] > -3 && visionVals[0] < 3){
-                    if(visionVals[3] == 1){
-                        moveStop();
-                        autonomousStep++;
-                    }
-                }else if(visionVals[0] < -3){
-                    turnLeft();
-                }else{
-                    turnRight();
-                }
+                // if (vision.aimToTarget(this)) {
+                //     autonomousStep++;
+                // }
 
                 break;
             }

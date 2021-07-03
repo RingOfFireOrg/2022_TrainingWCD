@@ -6,7 +6,28 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class Vision {
-    
+
+    private final int VISIONRANGE = 3;
+
+    public void turnLeft(){
+        Container.getInstance().frontLeftMotor.set(0.075);
+        Container.getInstance().backLeftMotor.set(0.075);
+        Container.getInstance().frontRightMotor.set(-0.092);
+        Container.getInstance().backRightMotor.set(-0.092);
+    }
+    public void turnRight(){
+        Container.getInstance().frontLeftMotor.set(-0.075);
+        Container.getInstance().backLeftMotor.set(-0.075);
+        Container.getInstance().frontRightMotor.set(0.092);
+        Container.getInstance().backRightMotor.set(0.092);
+    }
+    public void moveStop(){
+        Container.getInstance().frontLeftMotor.set(0);
+        Container.getInstance().backLeftMotor.set(0);
+        Container.getInstance().frontRightMotor.set(0);
+        Container.getInstance().backRightMotor.set(0);
+    }
+
     public double[] updateVisionVals() {
 
         NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -30,5 +51,36 @@ public class Vision {
         double[] arr = {x, y, area, v};
         return arr;
 
+    }
+
+    public boolean aimToTarget(Autonomous auto) {
+
+        
+        double[] visionVals = updateVisionVals();
+
+        // if (visionVals[0] > -3 && visionVals[0] < 3){
+        //     if(visionVals[3] == 1){
+        //         auto.moveStop();
+        //         return true;
+        //     }
+        // }else if(visionVals[0] < -3){
+        //     auto.turnLeft();
+        // }else{
+        //     auto.turnRight();
+        // } 
+        // return false;
+
+
+    if (visionVals[0] < -VISIONRANGE) {
+        turnLeft();
+    } else if ( visionVals[0] > VISIONRANGE) {
+        turnRight();
+    }else {
+        if(visionVals[3] == 1){
+            moveStop();
+            return true;
+        }
+    } 
+        return false;
     }
 }

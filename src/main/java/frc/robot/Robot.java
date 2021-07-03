@@ -69,13 +69,11 @@ protected Transfer transfer;
     shooter.teleopControl();
     intake.teleopControl();
     transfer.teleopControl();
+    vision.aimToTarget(auto);
 
 
 
-
-    if (ControlSystems.getInstance().aimButton.get()) {
-      vision.aimToTarget(auto);
-    } 
+    
   }
 
   @Override

@@ -58,29 +58,20 @@ public class Vision {
         
         double[] visionVals = updateVisionVals();
 
-        // if (visionVals[0] > -3 && visionVals[0] < 3){
-        //     if(visionVals[3] == 1){
-        //         auto.moveStop();
-        //         return true;
-        //     }
-        // }else if(visionVals[0] < -3){
-        //     auto.turnLeft();
-        // }else{
-        //     auto.turnRight();
-        // } 
-        // return false;
 
-
-    if (visionVals[0] < -VISIONRANGE) {
-        turnLeft();
-    } else if ( visionVals[0] > VISIONRANGE) {
-        turnRight();
-    }else {
-        if(visionVals[3] == 1){
-            moveStop();
-            return true;
+        if (ControlSystems.getInstance().aimButton.get()) {
+            if (visionVals[0] < -VISIONRANGE) {
+                turnLeft();
+            } else if ( visionVals[0] > VISIONRANGE) {
+                turnRight();
+            }else {
+                if(visionVals[3] == 1){
+                    moveStop();
+                    return true;
+                }
+            } 
+                return false;
+            }
+          return false; 
         }
-    } 
-        return false;
-    }
 }

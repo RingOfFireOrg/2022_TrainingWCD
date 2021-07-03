@@ -19,26 +19,29 @@ public class Transfer extends TeleopModule{
     @Override
     public void teleopControl() {
         if(ControlSystems.getInstance().transferIn.get()) {
-            tMode = TransferModes.IN;
+            //tMode = TransferModes.IN;
+            Container.getInstance().transfer.set(transferInSpeed);
         }
         else if(ControlSystems.getInstance().transferOut.get()) {
-            tMode = TransferModes.OUT;
+            //tMode = TransferModes.OUT;
+            Container.getInstance().transfer.set(transferOutSpeed);
         }
         else {
-            tMode = TransferModes.OFF;
+            //tMode = TransferModes.OFF;
+            Container.getInstance().transfer.set(0);
         }
         //Container.getInstance().intake.set(ControlSystems.getInstance().manipulatorStickSpeed());
     }
     @Override
     public void periodic() {
         if(tMode == TransferModes.IN) {
-            Container.getInstance().transfer.set(transferInSpeed);
+            //Container.getInstance().transfer.set(transferInSpeed);
         }
         else if(tMode == TransferModes.OUT) {
-            Container.getInstance().transfer.set(transferOutSpeed);
+            //Container.getInstance().transfer.set(transferOutSpeed);
         }
         else if(tMode == TransferModes.OFF) {
-            Container.getInstance().transfer.set(0);
+            //Container.getInstance().transfer.set(0);
         } 
     }
 }

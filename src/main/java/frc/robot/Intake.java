@@ -21,26 +21,29 @@ public class Intake extends TeleopModule{
     @Override
     public void teleopControl() {
         if(ControlSystems.getInstance().intakeIn.get()) {
-            iMode = IntakeModes.IN;
+            //iMode = IntakeModes.IN;
+            Container.getInstance().intake.set(intakeInSpeed);
         }
         else if(ControlSystems.getInstance().intakeOut.get()) {
-            iMode = IntakeModes.OUT;
+            //iMode = IntakeModes.OUT;
+            Container.getInstance().intake.set(intakeOutSpeed);
         }
         else {
-            iMode = IntakeModes.OFF;
+            //iMode = IntakeModes.OFF;
+            Container.getInstance().intake.set(0);
         }
         //Container.getInstance().intake.set(ControlSystems.getInstance().manipulatorStickSpeed());
     }
     @Override
     public void periodic() {
         if(iMode == IntakeModes.IN) {
-            Container.getInstance().intake.set(intakeInSpeed);
+            //Container.getInstance().intake.set(intakeInSpeed);
         }
         else if(iMode == IntakeModes.OUT) {
-            Container.getInstance().intake.set(intakeOutSpeed);
+            //Container.getInstance().intake.set(intakeOutSpeed);
         }
         else if(iMode == IntakeModes.OFF) {
-            Container.getInstance().intake.set(0);
+            //Container.getInstance().intake.set(0);
         } 
     }
 }

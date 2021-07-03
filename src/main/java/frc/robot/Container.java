@@ -28,6 +28,8 @@ public class Container {
     public CANEncoder leftEncoder, rightEncoder;
     public CANEncoder lowerShooterEncoder, upperShooterEncoder;
     private static Container theTrueContainer;
+    public VictorSP shooterAngler;
+
     public AHRS ahrs;
 
     private Container() {
@@ -49,6 +51,7 @@ public class Container {
         ahrs = new AHRS(SerialPort.Port.kUSB);
         lowerShooterEncoder = lowerShooter.getEncoder();
         upperShooterEncoder = upperShooter.getEncoder();
+        shooterAngler = new VictorSP(RobotMap.SHOOTER_ANGLER);
 		ahrs.reset();
     }
     

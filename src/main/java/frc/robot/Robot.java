@@ -40,7 +40,7 @@ protected Transfer transfer;
     transfer = new Transfer();
 
     driveTrain.teleopInit();
-    turret.teleopInit();
+    //turret.teleopInit();
     shooter.teleopInit();
     intake.teleopInit();
     transfer.teleopInit();

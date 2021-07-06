@@ -24,7 +24,7 @@ public class Container {
     public CANSparkMax lowerShooter;
     public VictorSP intake;
     public VictorSP transfer;
-    public CANSparkMax turretMotor;
+    //public CANSparkMax turretMotor;
     public CANEncoder leftEncoder, rightEncoder;
     public CANEncoder lowerShooterEncoder, upperShooterEncoder;
     private static Container theTrueContainer;
@@ -45,7 +45,7 @@ public class Container {
         rightEncoder = frontRightMotor.getEncoder();
         upperShooter = new CANSparkMax(RobotMap.UPPER_SHOOTER, MotorType.kBrushless);
         lowerShooter = new CANSparkMax(RobotMap.LOWER_SHOOTER, MotorType.kBrushless);
-        turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
+        //turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
         intake = new VictorSP(RobotMap.INTAKE);
         transfer = new VictorSP(RobotMap.TRANSFER);
         ahrs = new AHRS(SerialPort.Port.kUSB);

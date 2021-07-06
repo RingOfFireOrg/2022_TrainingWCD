@@ -38,7 +38,7 @@ public class Autonomous {
 
     private int autonomousMode = 1;
 
-    double[] visionVals = vision.updateVisionVals();
+    // double[] visionVals = vision.updateVisionVals();
 
     public void autonomousInit() {
         vision = new Vision();
@@ -132,19 +132,19 @@ public class Autonomous {
         Container.getInstance().transfer.set(0);
     }
 
-    public void visionAim(){
-        visionVals = vision.updateVisionVals();
-        if (visionVals[0] > -3 && visionVals[0] < 3){
-            if(visionVals[3] == 1){
-                moveStop();
-                autonomousStep++;
-            }
-        }else if(visionVals[0] < -3){
-            turnLeft();
-        }else{
-            turnRight();
-        }
-    }
+    // public void visionAim(){
+    //     visionVals = vision.updateVisionVals();
+    //     if (visionVals[0] > -3 && visionVals[0] < 3){
+    //         if(visionVals[3] == 1){
+    //             moveStop();
+    //             autonomousStep++;
+    //         }
+    //     }else if(visionVals[0] < -3){
+    //         turnLeft();
+    //     }else{
+    //         turnRight();
+    //     }
+    // }
 
     public void autonomousPeriodic() {
         // Write the actual auto code here
@@ -351,7 +351,7 @@ public class Autonomous {
                     
                     //autonomousStep++;
 
-                    visionAim();
+                    // visionAim();
 
                     break;
                 }

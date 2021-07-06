@@ -24,6 +24,7 @@ public class Shooter extends TeleopModule {
        // if(ControlSystems.getInstance().manipulatorStickTrigger()) {
             Container.getInstance().lowerShooter.set(ControlSystems.getInstance().gamepadLeftTrigger() * lowerShooterCoefficient);
         //} 
+        Container.getInstance().shooterAngler.set(ControlSystems.getInstance().mGamepadLeftY());
         SmartDashboard.putNumber("Left Trigger: ", ControlSystems.getInstance().gamepadRightTrigger() * upperShooterCoefficient);
         SmartDashboard.putNumber("Right Trigger: ", ControlSystems.getInstance().gamepadLeftTrigger() * lowerShooterCoefficient);
         SmartDashboard.putNumber("Lower Shooter Encoder Val: ", ControlSystems.getInstance().gamepadRightTrigger() * upperShooterCoefficient);

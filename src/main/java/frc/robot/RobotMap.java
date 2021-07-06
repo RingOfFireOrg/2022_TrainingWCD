@@ -7,6 +7,7 @@ public class RobotMap {
 	static final public int PWM1 = 1;
 	static final public int PWM2 = 2;
 	static final public int PWM3 = 3;
+	static final public int PWM4 = 4;
     static final public int CANBUS1 = 1;
     static final public int CANBUS2 = 2;
     static final public int CANBUS3 = 3;
@@ -25,6 +26,7 @@ public class RobotMap {
 	static final public int DT_LEFT_FORWARD = CANBUS6;
 	static final public int INTAKE = PWM1;
 	static final public int TRANSFER = PWM2;
+	static final public int TRANSFER2 = PWM4;
 	static final public int TURRET_SPINNER = CANBUS7;
 	static final public int SHOOTER_ANGLER = PWM3;
 

@@ -24,6 +24,8 @@ public class Container {
     public CANSparkMax lowerShooter;
     public VictorSP intake;
     public VictorSP transfer;
+    public VictorSP transfer2;
+    // this motor moves balls from transfer to shooter
     //public CANSparkMax turretMotor;
     public CANEncoder leftEncoder, rightEncoder;
     public CANEncoder lowerShooterEncoder, upperShooterEncoder;
@@ -48,6 +50,7 @@ public class Container {
         //turretMotor = new CANSparkMax(RobotMap.TURRET_SPINNER, MotorType.kBrushless);
         intake = new VictorSP(RobotMap.INTAKE);
         transfer = new VictorSP(RobotMap.TRANSFER);
+        transfer2 = new VictorSP(RobotMap.TRANSFER2);
         ahrs = new AHRS(SerialPort.Port.kUSB);
         lowerShooterEncoder = lowerShooter.getEncoder();
         upperShooterEncoder = upperShooter.getEncoder();

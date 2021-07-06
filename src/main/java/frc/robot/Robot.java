@@ -69,7 +69,7 @@ protected Transfer transfer;
     shooter.teleopControl();
     intake.teleopControl();
     transfer.teleopControl();
-    vision.aimToTarget(auto);
+    //vision.aimToTarget(auto);
 
 
 

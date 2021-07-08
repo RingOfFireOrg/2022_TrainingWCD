@@ -36,10 +36,13 @@ public class Autonomous {
     private double transferInSpeed = 1;
     private double transferOutSpeed = -1;
 
-    private int autonomousMode = 1;
+    private String autonomousMode = "right";
+
+    double[] visionVals;
 
     public void autonomousInit() {
         vision = new Vision();
+        visionVals = vision.updateVisionVals();
         rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor,
                 Container.getInstance().backRightMotor);
         leftMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor,
@@ -47,6 +50,8 @@ public class Autonomous {
 
         //intake = Container.getInstance().intake;
     }
+
+     
 
     public double howFarLeft() {
         return Container.getInstance().getLeftInches()-leftEncoderOffset;
@@ -130,11 +135,24 @@ public class Autonomous {
         Container.getInstance().transfer.set(0);
     }
 
+    public void visionAim(){
+        visionVals = vision.updateVisionVals();
+        if (visionVals[0] > -3 && visionVals[0] < 3){
+            if(visionVals[3] == 1){
+                moveStop();
+                autonomousStep++;
+            }
+        }else if(visionVals[0] < -3){
+            turnLeft();
+        }else{
+            turnRight();
+        }
+    }
 
     public void autonomousPeriodic() {
         // Write the actual auto code here
         
-        if(autonomousMode == 1){
+        if(autonomousMode == "right"){
             switch (autonomousStep) {
                 case -1: {
                     //Setup
@@ -146,11 +164,7 @@ public class Autonomous {
                 case 0: {
                     //Turn to target
                     
-                    autonomousStep++;
-
-                    if(vision.aimToTarget()) {
-                        autonomousStep++;
-                    }
+                    visionAim();
 
                     break;
                 }
@@ -162,13 +176,13 @@ public class Autonomous {
                 case 2: {
                     //Transfer and Shoot (3 balls)
                                     
-                    //shoot();
+                    shoot();
 
                     transferIn();
 
                     shooterTimer++;
 
-                    if(shooterTimer > 50){
+                    if(shooterTimer > 80){
                         shooterTimer = 0;
                         //autonomousStep++;
                     }
@@ -204,11 +218,7 @@ public class Autonomous {
                     
                     moveForward();
 
-                    /*if (howFarRight() < -FEET*5.21){
-                        autonomousStep++;
-                    }*/
                     if (howFarRight() < -FEET*5.21){
-                        //moveStop();
                         autonomousStep++;
                     }
                     
@@ -242,9 +252,6 @@ public class Autonomous {
                     intakeIn();
                     moveForward();
 
-                    /*if (howFarRight() < -FEET*16.14){
-                        autonomousStep++;
-                    }*/
                     if (howFarRight() < -FEET*16.14){
                         autonomousStep++;
                     }
@@ -263,9 +270,6 @@ public class Autonomous {
                     
                     moveBackward();
 
-                    /*if (howFarRight() > FEET*16.14){
-                        autonomousStep++;
-                    }*/
                     if (howFarRight() > FEET*16.14){
                         autonomousStep++;
                     }
@@ -301,9 +305,6 @@ public class Autonomous {
 
                     moveBackward();
 
-                    /*if (howFarRight() > FEET*5.21){
-                        autonomousStep++;
-                    }*/
                     if (howFarRight() > FEET*5.21){
                         autonomousStep++;
                     }
@@ -338,9 +339,7 @@ public class Autonomous {
                     
                     //autonomousStep++;
 
-                    if(vision.aimToTarget()) {
-                        autonomousStep++;
-                    }
+                    visionAim();
 
                     break;
                 }
@@ -372,12 +371,80 @@ public class Autonomous {
                     break;
                 }
             }
-        }else if(autonomousMode == 2){
-            
+        }else if(autonomousMode == "middle"){
+            switch (autonomousStep) {
+                case -1: {
+                    //Setup
+                    resetNavX();
+                    resetEncoders();
+                    autonomousStep++;
+                    break;
+                }
+                case 0: {
+                    //Turn to target
+                    
+                    autonomousStep++;
+
+                    visionAim();
+
+                    break;
+                }
+                case 1: {
+                    moveStop();
+                    autonomousStep++;
+                    break;
+                }
+                case 2: {
+                    transferIn();
+                    shoot();
+
+                    shooterTimer++;
+
+                    if(shooterTimer > 100){
+                        shooterTimer = 0;
+                        autonomousStep++;
+                    }
+                }
+                case 3: {
+                    moveStop();
+                    shooterStop();
+                    transferStop();
+                    autonomousStep++;
+                    break;
+                }
+                case 4: {
+                    if(getabsoluteDirection() < 165){
+                        turnRight();
+                    }else{
+                        autonomousStep++;
+                    }
+                }
+                case 5: {
+                    moveStop();
+                    resetEncoders();
+                    autonomousStep++;
+                    break;
+                }
+                case 6: {
+                    if(howFarRight() < FEET*3){
+                        moveForward();
+                    }else{
+                        autonomousStep++;
+                    }
+                }
+                case 7: {
+                    moveStop();
+                    autonomousStep++;
+                    break;
+
+                    //Done
+                }
+            }
         }
         SmartDashboard.putNumber("How Far left", howFarLeft());
         SmartDashboard.putNumber("How Far right", howFarRight());
         SmartDashboard.putNumber("Absolute Direction", getabsoluteDirection());
         SmartDashboard.putNumber("Current Autonomous Step: ", autonomousStep);
+        SmartDashboard.putString("Current Autonomous Mode: ", autonomousMode);
     }
 }

@@ -434,13 +434,60 @@ public class Autonomous {
                 }
                 case 7: {
                     moveStop();
-                    autonomousStep++;
                     break;
 
                     //Done
                 }
             }
+        }else if(autonomousMode == "left"){
+            switch (autonomousStep) {
+                case -1: {
+                    //Setup
+                    resetNavX();
+                    resetEncoders();
+                    autonomousStep++;
+                    break;
+                }
+                case 0: {
+                    if(howFarRight() < FEET*8){
+                        moveForward();
+                    }else{
+                        autonomousStep++;
+                    }
+                }
+                case 1: {
+                    moveStop();
+                    autonomousStep++;
+                    break;
+                }
+                case 2: {
+                    if(howFarRight() > 0){
+                        moveBackward();
+                    }else{
+                        autonomousStep++;
+                    }
+                }
+                case 3: {
+                    moveStop();
+                    autonomousStep++;
+                    break;
+                }
+                case 4: {
+                    if(getabsoluteDirection() < -80){
+                        turnLeft();
+                    }else{
+                        autonomousStep++;
+                    }
+                }
+                case 5: {
+                    moveStop();
+                    break;
+
+                    //Done!
+                }
+            }
         }
+        
         SmartDashboard.putNumber("How Far left", howFarLeft());
         SmartDashboard.putNumber("How Far right", howFarRight());
         SmartDashboard.putNumber("Absolute Direction", getabsoluteDirection());

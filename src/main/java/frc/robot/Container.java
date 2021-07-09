@@ -66,7 +66,7 @@ public class Container {
         return rightEncoder.getPosition() / RobotMap.DRIVEBASE_GEAR_RATIO * Math.PI * RobotMap.DRIVE_WHEEL_DIAMETER_IN;
     }
 
-    public static Container getInstance() {
+    public static Container getInstance() { //nice
         if (theTrueContainer != null) {
             return theTrueContainer;
         }                   

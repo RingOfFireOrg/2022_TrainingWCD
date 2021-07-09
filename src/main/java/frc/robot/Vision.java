@@ -4,12 +4,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+
 
 public class Vision extends TeleopModule {
 
     private final int VISIONRANGE = 3;
 
+    private SpeedControllerGroup leftMotors, rightMotors;
+
     public void teleopInit() {
+        rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor, Container.getInstance().backRightMotor);
+        leftMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor, Container.getInstance().backLeftMotor);
     }
 
     public void teleopControl() {
@@ -17,26 +23,19 @@ public class Vision extends TeleopModule {
             aimToTarget();
         }
     }
-    public void periodic() {
-    }
+
 
     public void turnLeft(){
-        Container.getInstance().frontLeftMotor.set(0.075);
-        Container.getInstance().backLeftMotor.set(0.075);
-        Container.getInstance().frontRightMotor.set(-0.092);
-        Container.getInstance().backRightMotor.set(-0.092);
+        leftMotors.set(0.075);
+        rightMotors.set(-0.092);
     }
     public void turnRight(){
-        Container.getInstance().frontLeftMotor.set(-0.075);
-        Container.getInstance().backLeftMotor.set(-0.075);
-        Container.getInstance().frontRightMotor.set(0.092);
-        Container.getInstance().backRightMotor.set(0.092);
+        leftMotors.set(-0.075);
+        rightMotors.set(0.092);
     }
     public void moveStop(){
-        Container.getInstance().frontLeftMotor.set(0);
-        Container.getInstance().backLeftMotor.set(0);
-        Container.getInstance().frontRightMotor.set(0);
-        Container.getInstance().backRightMotor.set(0);
+        leftMotors.set(0);
+        rightMotors.set(0);
     }
 
     public double[] updateVisionVals() {
@@ -67,7 +66,7 @@ public class Vision extends TeleopModule {
     public boolean aimToTarget() {
         
         double[] visionVals = updateVisionVals();
-
+        //nice
             if (visionVals[0] < -VISIONRANGE) {
                 turnLeft();
             } else if ( visionVals[0] > VISIONRANGE) {
@@ -79,5 +78,7 @@ public class Vision extends TeleopModule {
                 }
             } 
                 return false;
+        }
+        public void periodic() {
         }
 }

@@ -44,6 +44,7 @@ protected Transfer transfer;
     shooter.teleopInit();
     intake.teleopInit();
     transfer.teleopInit();
+    vision.teleopInit();
   }
 
   @Override
@@ -65,7 +66,7 @@ protected Transfer transfer;
   @Override
   public void teleopPeriodic() {
     driveTrain.teleopControl();
-    //turret.teleopControl();
+    //turret.teleopControl(); nice
     shooter.teleopControl();
     intake.teleopControl();
     transfer.teleopControl();

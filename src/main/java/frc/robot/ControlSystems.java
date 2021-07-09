@@ -66,7 +66,7 @@ public class ControlSystems {
         return driverController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_JOYSTICK_Y);
     }
     public double gamepadLeftTrigger() {
-        return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_LEFT_TRIGGER);
+        return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_LEFT_TRIGGER); //nice
     }
     public double gamepadRightTrigger() {
         return manipulatorController.getRawAxis(RobotMap.MANIPULATOR_RIGHT_TRIGGER);

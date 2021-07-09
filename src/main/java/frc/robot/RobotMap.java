@@ -65,3 +65,5 @@ public class RobotMap {
 	public static final double DRIVEBOX_KA_CONSTANT = 0.243;//to be defined later
 	public static final double DRIVE_WHEEL_DIAMETER_IN = 6;
 }
+
+//nice

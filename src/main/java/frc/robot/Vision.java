@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 public class Vision extends TeleopModule {
 
-    private final int VISIONRANGE = 3;
+    private final int VISIONRANGE = 2;
 
     private SpeedControllerGroup leftMotors, rightMotors;
 

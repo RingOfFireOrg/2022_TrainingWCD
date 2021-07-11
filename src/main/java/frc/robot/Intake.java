@@ -4,8 +4,8 @@ import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 public class Intake extends TeleopModule{
     
-    private double intakeInSpeed = 1;
-    private double intakeOutSpeed = -1;
+    private double intakeInSpeed = -1;
+    private double intakeOutSpeed = 1;
     public enum IntakeModes {
         OUT, IN, OFF
     }

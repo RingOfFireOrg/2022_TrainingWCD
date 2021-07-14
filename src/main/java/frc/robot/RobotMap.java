@@ -40,8 +40,6 @@ public class RobotMap {
 
 	//Joystick Buttons
 	public static final int DRIVER_TRIGGER = 1;
-	public static final int DRIVER_THUMB = 2;
-	public static final int DRIVER_THIRD_BUTTON = 3;
 	
 	//Gamepad Buttons
 	public static final int MANIPULATOR_LEFT_BUMPER = 5;

@@ -15,8 +15,7 @@ public class ControlSystems {
     Joystick manipulatorStick;
     XboxController driverController;
     XboxController manipulatorController;
-    public JoystickButton transferIn, transferOut, intakeIn, intakeOut, aimButton, gamepadHalfSpeed, joystickHalfSpeed,
-            joystickAimButton, gamepadAimButton, gamepadJogButton, joystickJogButton;
+    public JoystickButton transferIn, transferOut, intakeIn, intakeOut, aimButton, halfSpeed, joystickAimButton, gamepadAimButton, gamepadJogButton, joystickJogButton;
 
     public ControlSystems() {
         rightstick = new Joystick(0);
@@ -30,13 +29,12 @@ public class ControlSystems {
         intakeOut = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_B_BUTTON);
 
         gamepadAimButton = new JoystickButton(driverController, RobotMap.MANIPULATOR_LEFT_BUMPER);
-        joystickAimButton = new JoystickButton(rightstick, RobotMap.DRIVER_THUMB);
+        joystickAimButton = new JoystickButton(rightstick, RobotMap.DRIVER_TRIGGER);
 
         gamepadJogButton = new JoystickButton(driverController, RobotMap.MANIPULATOR_A_BUTTON);
-        joystickJogButton = new JoystickButton(rightstick, RobotMap.DRIVER_TRIGGER);
-
-        gamepadHalfSpeed = new JoystickButton(driverController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
-        joystickHalfSpeed = new JoystickButton(rightstick, RobotMap.DRIVER_THIRD_BUTTON);
+       // joyStickJogButton = new JoystickButton()
+        
+        halfSpeed = new JoystickButton(driverController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
     }
     public double rightSpeed() {
         if (Math.abs(rightstick.getY()) < .1) {

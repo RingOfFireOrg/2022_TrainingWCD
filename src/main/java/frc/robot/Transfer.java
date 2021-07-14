@@ -31,7 +31,7 @@ public class Transfer extends TeleopModule{
             Container.getInstance().transfer.set(0);
         }
         //Container.getInstance().intake.set(ControlSystems.getInstance().manipulatorStickSpeed());
-        //Container.getInstance().transfer2.set(ControlSystems.getInstance().mGamepadRightY());
+        Container.getInstance().transfer2.set(ControlSystems.getInstance().mGamepadRightY());
     }
     @Override
     public void periodic() {

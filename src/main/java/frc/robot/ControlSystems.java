@@ -28,7 +28,7 @@ public class ControlSystems {
         intakeIn = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_A_BUTTON);
         intakeOut = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_B_BUTTON);
 
-        aimButton = new JoystickButton(manipulatorController, RobotMap.MANIPULATOR_X_BUTTON);
+        aimButton = new JoystickButton(driverController, RobotMap.MANIPULATOR_LEFT_BUMPER);
 
         halfSpeed = new JoystickButton(driverController, RobotMap.MANIPULATOR_RIGHT_BUMPER);
     }

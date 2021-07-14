@@ -30,17 +30,16 @@ public class DriveTrain extends TeleopModule {
     public DriveTrain() {
         rightMotors = new SpeedControllerGroup(Container.getInstance().frontRightMotor, Container.getInstance().backRightMotor);
         leftMotors = new SpeedControllerGroup(Container.getInstance().frontLeftMotor, Container.getInstance().backLeftMotor);
-            
+
+    }
+    @Override
+    public void teleopControl() {
         if(ControlSystems.getInstance().halfSpeed.get()){
-            speedCoefficient *= (originalSpeed / 2);
+            speedCoefficient = (originalSpeed / 2);
         }
         else {
             speedCoefficient = originalSpeed;
         }
-    }
-
-    @Override
-    public void teleopControl() {
         double leftInputSpeed = speedCoefficient * ControlSystems.getInstance().dGamepadLeftY();
         double rightInputSpeed = speedCoefficient * ControlSystems.getInstance().dGamepadRightY();
         if(rightInputSpeed * motorCoefficient > 1){rightInputSpeed = 1;}

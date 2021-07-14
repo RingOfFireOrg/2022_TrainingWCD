@@ -19,20 +19,21 @@ public class Vision extends TeleopModule {
     }
 
     public void teleopControl() {
-        if (ControlSystems.getInstance().gamepadAimButton.get() || ControlSystems.getInstance().joystickAimButton.get()) {
+        if (ControlSystems.getInstance().aimButton.get()) {
             aimToTarget();
         }
     }
 
-    private void turnLeft(){
+
+    public void turnLeft(){
         leftMotors.set(0.075);
         rightMotors.set(-0.092);
     }
-    private void turnRight(){
+    public void turnRight(){
         leftMotors.set(-0.075);
         rightMotors.set(0.092);
     }
-    private void moveStop(){
+    public void moveStop(){
         leftMotors.set(0);
         rightMotors.set(0);
     }

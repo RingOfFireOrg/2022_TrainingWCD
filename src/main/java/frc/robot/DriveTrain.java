@@ -44,10 +44,8 @@ public class DriveTrain extends TeleopModule {
         double leftInputSpeed = speedCoefficient * ControlSystems.getInstance().dGamepadLeftY();
         double rightInputSpeed = speedCoefficient * ControlSystems.getInstance().dGamepadRightY();
         if(rightInputSpeed * motorCoefficient > 1){rightInputSpeed = 1;}
-        rightMotors.set(rightInputSpeed*motorCoefficient); //this is because the right motors are a bit slow
-        //leftMotors.set(ControlSystems.getInstance().leftSpeed());
-        rightMotors.set(rightInputSpeed*motorCoefficient); //this is because the right motors are a bit slow
-        //leftMotors.set(ControlSystems.getInstance().rightSpeed());
+        rightMotors.set(rightInputSpeed*motorCoefficient); //this is because the right motors are a bit slow        
+        leftMotors.set(leftInputSpeed);
     }
     @Override
     public void teleopInit() {

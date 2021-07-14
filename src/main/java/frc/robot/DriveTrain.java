@@ -65,8 +65,8 @@ public class DriveTrain extends TeleopModule {
         leftMotors.set(leftInputSpeed); // left and right for gamepad
         rightMotors.set(rightInputSpeed*motorCoefficient); //this is because the right motors are a bit slow
 
-        // leftMotors.set(ControlSystems.getInstance().leftSpeed()); // jesse we need to code, left and right for joystick
-        // rightMotors.set(ControlSystems.getInstance().rightSpeed());
+        leftMotors.set(ControlSystems.getInstance().leftSpeed()); // jesse we need to code, left and right for joystick
+        rightMotors.set(ControlSystems.getInstance().rightSpeed());
 
         // if (ControlSystems.getInstance().gamepadJogButton.get() || ControlSystems.getInstance().joystickJogButton.get()) {
             

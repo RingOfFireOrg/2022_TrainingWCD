@@ -80,12 +80,12 @@ public class Autonomous {
         rightMotors.set(0.5);
     }
     public void turnLeft() {
-        leftMotors.set(0.1);
-        rightMotors.set(-0.125);
+        leftMotors.set(0.075);
+        rightMotors.set(-0.09375);
     }
     public void turnRight() {
-        leftMotors.set(-0.1);
-        rightMotors.set(0.125);
+        leftMotors.set(-0.075);
+        rightMotors.set(0.09375);
     }
     public void moveStop() {
         leftMotors.set(0);
@@ -148,12 +148,12 @@ public class Autonomous {
  
     public void visionAim(){
         visionVals = vision.updateVisionVals();
-        if (visionVals[0] > -5 && visionVals[0] < 5){
+        if (visionVals[0] > -3 && visionVals[0] < 3){
             if(visionVals[3] == 1){
                 moveStop();
                 targetFound = true;
             }
-        }else if(visionVals[0] < -5){
+        }else if(visionVals[0] < -3){
             turnLeft();
         }else{
             turnRight();
@@ -210,9 +210,8 @@ public class Autonomous {
                         autonomousStep++;
                         targetFound = false;
                     }
-                    autonomousStep++;
  
-                    break;  
+                    break;
                 }
                 case 5: {
                     moveStop();
@@ -223,19 +222,20 @@ public class Autonomous {
                     //Transfer and Shoot (3 balls)
                                     
                     shoot();
-                    intakeIn();
  
                     if(shooterPause > 15){
                     transferIn();
                     }
                     shooterPause++;
-                
+ 
                     shooterTimer++;
  
-                    if(shooterTimer > 180){
+                    if(shooterTimer > 170){
                         shooterTimer = 0;
                         autonomousStep++;
                     }
+ 
+                    //autonomousStep++;
  
                     break;
                 }
@@ -243,16 +243,14 @@ public class Autonomous {
                     moveStop();
                     shooterStop();
                     transferStop();
-                    intakeStop();
                     autonomousStep++;
                     break;
                 }
                 case 8: {
                     //Right 90 degrees
-                    turnLeft();
+                    turnRight();
                     
-                    if(getabsoluteDirection() < -137){
-                        turnRight();
+                    if(getabsoluteDirection() > 120){
                         autonomousStep++;
                     }
                     break;
@@ -268,12 +266,9 @@ public class Autonomous {
                     
                     moveForward();
  
-                    if (howFarRight() < -FEET*18){
-                        moveStop();
+                    if (howFarRight() < -FEET*5.7){
                         autonomousStep++;
                     }
- 
-                    intakeIn();
                     
                     break;
                 }
@@ -285,30 +280,16 @@ public class Autonomous {
                 }
                 case 12: {
                     //Right 90 degrees
-                    moveBackward();
- 
-                    if(howFarRight() > -2){
-                        moveStop();
+                    turnRight();
+                    
+                    if(Math.abs(getabsoluteDirection()) > 164){
                         autonomousStep++;
                     }
- 
-                    if(intakeInOutTimer < 5){
-                        intakeOut();
-                    }else if(intakeInOutTimer < 30){
-                        intakeIn();
-                    }else{
-                        intakeStop();
-                        intakeInOutTimer = 0;  
-                    }
-                    intakeInOutTimer++;
- 
- 
                     break;
                 }
                 case 13: {
                     moveStop();
                     resetEncoders();
-                    intakeIn();
                     autonomousStep++;
                     break;
                 }
@@ -316,24 +297,160 @@ public class Autonomous {
                     //Forward 16' 2.625"
                     //Intake
  
-                    turnRight();
+                    intakeIn();
+                    moveForward();
  
-                    if(getabsoluteDirection() > -10){
-                        turnLeft();
+                    if (howFarRight() < -FEET*16.85){
                         autonomousStep++;
                     }
+ 
                     break;
                 }
                 case 15: {
                     moveStop();
                     resetEncoders();
+                    intakeStop();
+                    autonomousStep++;
+                    break;
+                }
+                case 16: {
+                    //Backwards 16' 2.625"
+                    
+                    /*moveBackward();
+ 
+                    if (howFarRight() > FEET*16.04){
+                        autonomousStep++;
+                    }*/
+ 
+                    turnRight();
+                    
+                    if(Math.abs(getabsoluteDirection()) < 28){
+                        autonomousStep++;
+                    }
+                    break;
+ 
+                    /*if(intakeInOutTimer < 3){
+                        intakeOut();
+                    }else if(intakeInOutTimer < 15){
+                        intakeIn();
+                    }else{
+                        intakeStop();
+                        intakeInOutTimer = 0;  
+                    }
+                    intakeInOutTimer++;
+ 
+                    break;*/
+                }
+                case 17: {
+                    moveStop();
+                    resetEncoders();
+                    autonomousStep++;
+                    break;
+                }
+                case 18: {
+                    //Left 90 degrees
+ 
+                    /*turnLeft();
+                    
+                    if(Math.abs(getabsoluteDirection()) < 100){
+                        autonomousStep++; 
+                    }*/
+ 
+                    moveForward();
+ 
+                    if (howFarRight() < -FEET*21){
+                        autonomousStep++;
+                    }
+ 
+                    if(intakeInOutTimer < 8){
+                        intakeOut();
+                    }else if(intakeInOutTimer < 35){
+                        intakeIn();
+                    }else{
+                        intakeStop();
+                        intakeInOutTimer = 0;  
+                    }
+                    intakeInOutTimer++;
+ 
+                    break;
+                }
+                case 19: {
+                    moveStop();
+                    resetEncoders();
+                    intakeIn();
+                    
+                    autonomousStep++;
+                    break;
+                }
+                case 20: {
+                    //Backwards 5.2'
+ 
+                    /*moveBackward();
+ 
+                    if (howFarRight() > FEET*5.0){
+                        autonomousStep++; 
+                    }*/
+                    autonomousStep++;
+ 
+                    break;
+                }
+                case 21: {
+                    moveStop();
+                    
+                    autonomousStep++;
+                    break;
+                }
+                case 22: {
+                    //Left 90 degrees
+ 
+                    /*turnLeft();
+                    
+                    if(getabsoluteDirection() < 15){
+                        autonomousStep++; 
+                    }*/
+                    autonomousStep++;
+ 
+                    break;
+                }
+                case 23: {
+                    moveStop();
+                    
+                    autonomousStep++;
+                    targetFound = false;
+                    break;
+                }
+                case 24: {     
+                    //Turn to target
+                    
+                    //autonomousStep++;
+ 
+                    visionAim();
+ 
+                    if(intakeInOutTimer < 8){
+                        intakeOut();
+                    }else if(intakeInOutTimer < 35){
+                        intakeIn();
+                    }else{
+                        intakeStop();
+                        intakeInOutTimer = 0;  
+                    }
+                    intakeInOutTimer++;
+ 
+                    if(targetFound == true){
+                        autonomousStep++;
+                    }
+ 
+                    break;
+                }
+                case 25: {
+                    moveStop();
                     autonomousStep++;
                     shooterPause = 0;
                     shooterTimer = 0;
                     intakeIn();
                     break;
                 }
-                case 16: {
+                case 26: {
                     //Shoot and Transfer
  
                     visionAim();
@@ -351,6 +468,15 @@ public class Autonomous {
                         shooterTimer = 0;
                         //autonomousStep++;
                     }
+                    break;
+                }
+                case 27: {
+                    //FINISHED!!!
+                    moveStop();
+                    shooterStop();
+                    transferStop();
+                    intakeStop();
+                    Container.getInstance().ahrs.reset();
                     break;
                 }
             }
@@ -444,12 +570,11 @@ public class Autonomous {
                     break;
                 }
                 case 2: {
-                    if(howFarRight() > 0.5){
+                    if(howFarRight() > 0){
                         moveBackward();
                     }else{
                         autonomousStep++;
                     }
-                    break;
                 }
                 case 3: {
                     moveStop();

@@ -251,7 +251,7 @@ public class Autonomous {
                     //Right 90 degrees
                     turnLeft();
                     
-                    if(getabsoluteDirection() < -144){
+                    if(getabsoluteDirection() < -137){
                         turnRight();
                         autonomousStep++;
                     }
@@ -268,7 +268,7 @@ public class Autonomous {
                     
                     moveForward();
  
-                    if (howFarRight() < -FEET*16.1){
+                    if (howFarRight() < -FEET*18){
                         moveStop();
                         autonomousStep++;
                     }
@@ -287,7 +287,8 @@ public class Autonomous {
                     //Right 90 degrees
                     moveBackward();
  
-                    if(howFarRight() > 0){
+                    if(howFarRight() > -2){
+                        moveStop();
                         autonomousStep++;
                     }
  
@@ -317,7 +318,7 @@ public class Autonomous {
  
                     turnRight();
  
-                    if(getabsoluteDirection() > -2){
+                    if(getabsoluteDirection() > -10){
                         turnLeft();
                         autonomousStep++;
                     }
@@ -448,6 +449,7 @@ public class Autonomous {
                     }else{
                         autonomousStep++;
                     }
+                    break;
                 }
                 case 3: {
                     moveStop();
